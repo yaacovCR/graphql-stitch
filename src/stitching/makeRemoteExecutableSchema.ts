@@ -29,7 +29,7 @@ import { makeExecutableSchema } from '../makeExecutableSchema';
 import { recreateType } from './schemaRecreation';
 import resolveParentFromTypename from './resolveFromParentTypename';
 import defaultMergedResolver from './defaultMergedResolver';
-import { checkResultAndHandleErrors } from './errors';
+import { checkResultAndHandleErrors } from './checkResultAndHandleErrors';
 import { observableToAsyncIterable } from './observableToAsyncIterable';
 import { Options as PrintSchemaOptions } from 'graphql/utilities/schemaPrinter';
 
