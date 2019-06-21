@@ -64,6 +64,7 @@ Previously, the merged schema internally used the serialized version.
 
 ## [5.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v4.0.4...v5.0.0) (2019-06-02)
 
+* First forked version, bumped major version despite lack of breaking changes.
 * Fix `delegateToSchema` to allow delegation to subscriptions with different root field names, allows
   the use of the `RenameRootFields` transform with subscriptions,
   pull request [#1104](https://github.com/apollographql/graphql-tools/pull/1104), fixes
