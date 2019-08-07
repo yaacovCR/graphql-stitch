@@ -3,7 +3,7 @@ import introspectSchema from './introspectSchema';
 import mergeSchemas from './mergeSchemas';
 import delegateToSchema from './delegateToSchema';
 import delegateToRemoteSchema from './delegateToRemoteSchema';
-import defaultMergedResolver from './defaultMergedResolver';
+import defaultMergedResolver, { setMergeFieldName } from './defaultMergedResolver';
 
 export {
   makeRemoteExecutableSchema,
@@ -14,5 +14,6 @@ export {
   delegateToSchema,
   delegateToRemoteSchema,
   defaultMergedResolver,
+  setMergeFieldName,
   defaultCreateRemoteResolver
 };

@@ -10,7 +10,9 @@ import {
   TypeInfo,
   visit,
   visitWithTypeInfo,
-  Kind
+  Kind,
+  SelectionSetNode,
+  SelectionNode
 } from 'graphql';
 import isEmptyObject from '../isEmptyObject';
 import { Request } from '../Interfaces';
@@ -28,7 +30,7 @@ export type FieldNodeTransformer = (
   typeName: string,
   fieldName: string,
   fieldNode: FieldNode
-) => FieldNode;
+) => SelectionNode | Array<SelectionNode>;
 
 type FieldMapping = {
   [typeName: string]: {
@@ -42,7 +44,10 @@ export default class TransformObjectFields implements Transform {
   private schema: GraphQLSchema;
   private mapping: FieldMapping;
 
-  constructor(objectFieldTransformer: ObjectFieldTransformer, fieldNodeTransformer?: FieldNodeTransformer) {
+  constructor(
+    objectFieldTransformer: ObjectFieldTransformer,
+    fieldNodeTransformer?: FieldNodeTransformer,
+  ) {
     this.objectFieldTransformer = objectFieldTransformer;
     this.fieldNodeTransformer = fieldNodeTransformer;
     this.mapping = {};
@@ -61,7 +66,11 @@ export default class TransformObjectFields implements Transform {
   }
 
   public transformRequest(originalRequest: Request): Request {
-    const document = this.reverseMapping(originalRequest.document, this.mapping, this.fieldNodeTransformer);
+    const document = this.transformDocument(
+      originalRequest.document,
+      this.mapping,
+      this.fieldNodeTransformer
+    );
     return {
       ...originalRequest,
       document
@@ -128,7 +137,7 @@ export default class TransformObjectFields implements Transform {
     }
   }
 
-  private reverseMapping(
+  private transformDocument(
     document: DocumentNode,
     mapping: FieldMapping,
     fieldNodeTransformer?: FieldNodeTransformer
@@ -137,27 +146,44 @@ export default class TransformObjectFields implements Transform {
     const newDocument: DocumentNode = visit(
       document,
       visitWithTypeInfo(typeInfo, {
-        [Kind.FIELD](node: FieldNode): FieldNode | null | undefined {
+        [Kind.SELECTION_SET](node: SelectionSetNode): SelectionSetNode {
           const parentType: GraphQLType = typeInfo.getParentType();
           if (parentType) {
             const parentTypeName = parentType.name;
-            const newName = node.name.value;
-            const transformedNode = fieldNodeTransformer
-              ? fieldNodeTransformer(parentTypeName, newName, node)
-              : node;
-            let transformedName = transformedNode.name.value;
-            if (mapping[parentTypeName]) {
-              const originalName = mapping[parentTypeName][newName];
-              if (originalName) {
-                transformedName = originalName;
+            let newSelections: Array<SelectionNode> = [];
+
+            node.selections.forEach(selection => {
+              if (selection.kind === Kind.FIELD) {
+                const newName = selection.name.value;
+                const transformedSelection = fieldNodeTransformer
+                  ? fieldNodeTransformer(parentTypeName, newName, selection)
+                  : selection;
+
+                if (Array.isArray(transformedSelection)) {
+                  newSelections = newSelections.concat(transformedSelection);
+                } else if (transformedSelection.kind === Kind.FIELD) {
+                  let originalName;
+                  if (mapping[parentTypeName]) {
+                    originalName = mapping[parentTypeName][newName];
+                  }
+                  newSelections.push({
+                    ...transformedSelection,
+                    name: {
+                      ...transformedSelection.name,
+                      value: originalName || transformedSelection.name.value
+                    }
+                  });
+                } else {
+                  newSelections.push(selection);
+                }
+              } else {
+                newSelections.push(selection);
               }
-            }
+            });
+
             return {
-              ...transformedNode,
-              name: {
-                ...node.name,
-                value: transformedName
-              }
+              ...node,
+              selections: newSelections,
             };
           }
         }

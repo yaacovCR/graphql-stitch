@@ -11,7 +11,8 @@ import {
   GraphQLNamedType,
   GraphQLScalarType,
   FieldNode,
-  printSchema
+  printSchema,
+  ExecutableDefinitionNode,
 } from 'graphql';
 import mergeSchemas from '../stitching/mergeSchemas';
 import {
@@ -21,6 +22,8 @@ import {
   RenameRootFields,
   RenameObjectFields,
   TransformObjectFields,
+  ExtendSchema,
+  TransformObjectField,
 } from '../transforms';
 import {
   propertySchema,
@@ -32,7 +35,12 @@ import {
 import { forAwaitEach } from 'iterall';
 import { createResolveType, fieldToFieldConfig } from '../stitching/schemaRecreation';
 import { makeExecutableSchema } from '../makeExecutableSchema';
-import { delegateToSchema, delegateToRemoteSchema } from '../stitching';
+import {
+  delegateToSchema,
+  delegateToRemoteSchema,
+  defaultMergedResolver,
+  setMergeFieldName
+} from '../stitching';
 import { SchemaExecutionConfig } from '../Interfaces';
 
 let linkSchema = `
@@ -440,6 +448,245 @@ type Query {
           new_name: 'Super great hotel',
           new_location: {
             name: 'Helsinki',
+          },
+        },
+      },
+    });
+  });
+});
+
+describe('ExtendSchema transform', () => {
+  let transformedPropertySchema: GraphQLSchema;
+
+  before(async () => {
+    transformedPropertySchema = transformSchema(propertySchema, [
+      new ExtendSchema({
+        typeDefs: `
+          extend type Property {
+            locationName: String
+            wrap: Wrap
+          }
+
+          type Wrap {
+            id: ID
+            name: String
+          }
+        `,
+        defaultFieldResolver: defaultMergedResolver,
+      }),
+    ]);
+  });
+
+  it('should work', () => {
+    /* tslint:disable:max-line-length */
+    expect(printSchema(transformedPropertySchema)).to.equal(`type Address {
+  street: String
+  city: String
+  state: String
+  zip: String
+}
+
+"""Simple fake datetime"""
+scalar DateTime
+
+input InputWithDefault {
+  test: String = "Foo"
+}
+
+"""
+The \`JSON\` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Location {
+  name: String!
+}
+
+type Property {
+  id: ID!
+  name: String!
+  location: Location
+  address: Address
+  error: String
+  locationName: String
+  wrap: Wrap
+}
+
+type Query {
+  propertyById(id: ID!): Property
+  properties(limit: Int = null): [Property!]
+  contextTest(key: String!): String
+  dateTimeTest: DateTime
+  jsonTest(input: JSON = null): JSON
+  interfaceTest(kind: TestInterfaceKind = null): TestInterface
+  unionTest(output: String = null): TestUnion
+  errorTest: String
+  errorTestNonNull: String!
+  relay: Query!
+  defaultInputTest(input: InputWithDefault!): String
+}
+
+type TestImpl1 implements TestInterface {
+  kind: TestInterfaceKind
+  testString: String
+  foo: String
+}
+
+type TestImpl2 implements TestInterface {
+  kind: TestInterfaceKind
+  testString: String
+  bar: String
+}
+
+interface TestInterface {
+  kind: TestInterfaceKind
+  testString: String
+}
+
+enum TestInterfaceKind {
+  ONE
+  TWO
+}
+
+union TestUnion = TestImpl1 | UnionImpl
+
+type UnionImpl {
+  someField: String
+}
+
+type Wrap {
+  id: ID
+  name: String
+}
+`
+      /* tslint:enable:max-line-length */
+    );
+  });
+});
+
+describe('ExtractObjectField transform', () => {
+  let transformedPropertySchema: GraphQLSchema;
+
+  before(async () => {
+    transformedPropertySchema = transformSchema(propertySchema, [
+      new ExtendSchema({
+        typeDefs: `
+          extend type Property {
+            locationName: String
+          }
+        `,
+        defaultFieldResolver: defaultMergedResolver,
+      }),
+      new TransformObjectField({
+        typeName: 'Property',
+        fieldName: 'locationName',
+        resolverWrapper: (originalResolver) =>
+          (parent, args, context, info) =>
+            setMergeFieldName(originalResolver, 'name')(parent.location, args, context, info),
+        fieldNodeTransformer: () => {
+          const newFieldNode = (parse(`
+            {
+              location {
+                name
+              }
+            }
+          `).definitions[0] as ExecutableDefinitionNode).selectionSet.selections[0];
+          return newFieldNode;
+        },
+      }),
+    ]);
+  });
+
+  it('should work to extract a field', async () => {
+    const result = await graphql(
+      transformedPropertySchema,
+      `
+        query($pid: ID!) {
+          propertyById(id: $pid) {
+            id
+            locationName
+            name
+          }
+        }
+      `,
+      {},
+      {},
+      {
+        pid: 'p1',
+      },
+    );
+
+    expect(result).to.deep.equal({
+      data: {
+        propertyById: {
+          id: 'p1',
+          locationName: 'Helsinki',
+          name: 'Super great hotel',
+        },
+      },
+    });
+  });
+});
+
+describe('WrapObjectField transform', () => {
+  let transformedPropertySchema: GraphQLSchema;
+
+  before(async () => {
+    transformedPropertySchema = transformSchema(propertySchema, [
+      new ExtendSchema({
+        typeDefs: `
+          extend type Property {
+            wrap: Wrap
+          }
+
+          type Wrap {
+            id: ID
+            name: String
+          }
+        `,
+        defaultFieldResolver: defaultMergedResolver,
+      }),
+      new TransformObjectField({
+        typeName: 'Property',
+        fieldName: 'wrap',
+        resolverWrapper: (originalResolver) =>
+          (parent, args, context, info) => ({
+              id: setMergeFieldName(originalResolver, 'id')(parent, args, context, info),
+              name: setMergeFieldName(originalResolver, 'name')(parent, args, context, info),
+            }),
+        fieldNodeTransformer: (fieldNode: FieldNode) => {
+          return [...fieldNode.selectionSet.selections];
+        },
+      }),
+    ]);
+  });
+
+  it('should work to wrap a field', async () => {
+    const result = await graphql(
+      transformedPropertySchema,
+      `
+        query($pid: ID!) {
+          propertyById(id: $pid) {
+            wrap {
+              id
+              name
+            }
+          }
+        }
+      `,
+      {},
+      {},
+      {
+        pid: 'p1',
+      },
+    );
+
+    expect(result).to.deep.equal({
+      data: {
+        propertyById: {
+          wrap: {
+            id: 'p1',
+            name: 'Super great hotel',
           },
         },
       },
