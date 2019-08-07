@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.3.0-alpha.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.2.0...v6.3.0-alpha.0) (2019-08-07)
+
+
+### Features
+
+* **transforms:** map object fields to new structures ([6423037](https://github.com/yaacovCR/graphql-tools-fork/commit/6423037))
+
+
+
 ## [6.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.1.6...v6.2.0) (2019-07-31)
 
 
