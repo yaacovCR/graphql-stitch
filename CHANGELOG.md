@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.3...v6.3.4) (2019-08-26)
+
+
+### Bug Fixes
+
+* **transforms:** support custom scalar input variables on root fields when transforming. ([9044976](https://github.com/yaacovCR/graphql-tools-fork/commit/9044976)), closes [#18](https://github.com/yaacovCR/graphql-tools-fork/issues/18)
+
+
+
 ### [6.3.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.2...v6.3.3) (2019-08-20)
 
 
