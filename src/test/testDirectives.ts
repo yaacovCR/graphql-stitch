@@ -597,7 +597,11 @@ describe('@directives', () => {
 
         field.args.push({
           name: 'format',
-          type: GraphQLString
+          type: GraphQLString,
+          description: undefined,
+          defaultValue: undefined,
+          extensions: undefined,
+          astNode: undefined,
         });
 
         field.type = GraphQLString;
@@ -1030,7 +1034,8 @@ describe('@directives', () => {
                   hash.update(String(object[fieldName]));
                 });
                 return hash.digest('hex');
-              }
+              },
+              extensions: undefined,
             };
           }
         }
