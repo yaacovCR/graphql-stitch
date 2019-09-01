@@ -2,6 +2,7 @@ import {
   GraphQLSchema,
   GraphQLField,
   ExecutionResult,
+  GraphQLInputType,
   GraphQLType,
   GraphQLNamedType,
   GraphQLFieldResolver,
@@ -190,6 +191,11 @@ export type IFieldIteratorFn = (
   fieldDef: GraphQLField<any, any>,
   typeName: string,
   fieldName: string,
+) => void;
+
+export type IDefaultValueIteratorFn = (
+  type: GraphQLInputType,
+  value: any,
 ) => void;
 
 export type NextResolverFn = () => Promise<any>;
