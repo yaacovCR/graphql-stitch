@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.4...v6.3.5) (2019-09-01)
+
+
+### Bug Fixes
+
+* **generate:** addResolversToSchema should update enums and scalars of original schema. ([62cb094](https://github.com/yaacovCR/graphql-tools-fork/commit/62cb094)), closes [#19](https://github.com/yaacovCR/graphql-tools-fork/issues/19)
+
 ### [6.3.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.3...v6.3.4) (2019-08-26)
 
 
