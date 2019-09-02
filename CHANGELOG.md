@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.6](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.5...v6.3.6) (2019-09-02)
+
+
+### Bug Fixes
+
+* **healSchema:** healing schema requires reparsing default field values as types are updated. ([906752e](https://github.com/yaacovCR/graphql-tools-fork/commit/906752e))
+
 ### [6.3.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.4...v6.3.5) (2019-09-01)
 
 
