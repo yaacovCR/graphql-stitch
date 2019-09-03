@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.3.7](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.6...v6.3.7) (2019-09-03)
+
+
+### Bug Fixes
+
+* **healSchema:** revert 6.3.6 ([58b98ac](https://github.com/yaacovCR/graphql-tools-fork/commit/58b98ac))
+
 ### [6.3.6](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.5...v6.3.6) (2019-09-02)
 
 
