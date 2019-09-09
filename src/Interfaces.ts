@@ -266,3 +266,5 @@ export type GraphQLParseOptions = {
   allowLegacySDLImplementsInterfaces?: boolean;
   experimentalFragmentVariables?: boolean;
 };
+
+export type IndexedObject<V> = { [key: string]: V } | ReadonlyArray<V>;
