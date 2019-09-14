@@ -11,9 +11,17 @@ import {
   GraphQLTypeResolver,
   GraphQLScalarType,
   DocumentNode,
+  GraphQLEnumValue,
+  GraphQLEnumType,
+  GraphQLUnionType,
+  GraphQLArgument,
+  GraphQLInputField,
+  GraphQLInputObjectType,
+  GraphQLInterfaceType,
+  GraphQLObjectType,
 } from 'graphql';
 
-import { SchemaDirectiveVisitor } from './schemaVisitor';
+import { SchemaDirectiveVisitor } from './utils/SchemaDirectiveVisitor';
 
 import { ApolloLink } from 'apollo-link';
 
@@ -268,3 +276,17 @@ export type GraphQLParseOptions = {
 };
 
 export type IndexedObject<V> = { [key: string]: V } | ReadonlyArray<V>;
+
+export type VisitableSchemaType =
+    GraphQLSchema
+  | GraphQLObjectType
+  | GraphQLInterfaceType
+  | GraphQLInputObjectType
+  | GraphQLNamedType
+  | GraphQLScalarType
+  | GraphQLField<any, any>
+  | GraphQLInputField
+  | GraphQLArgument
+  | GraphQLUnionType
+  | GraphQLEnumType
+  | GraphQLEnumValue;
