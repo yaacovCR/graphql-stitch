@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.4.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.7...v6.4.0) (2019-09-15)
+
+
+### Bug Fixes
+
+* **cloneSchema:** healSchema requires a new array for object interfaces and union types. toConfig provides a new map for fields, but not new arrays. ([1ff8bd5](https://github.com/yaacovCR/graphql-tools-fork/commit/1ff8bd5))
+* **transforms:** VisitSchemaKind.TYPE should have greatest priority ([cb61e68](https://github.com/yaacovCR/graphql-tools-fork/commit/cb61e68))
+* **visitSchema:** new interfaces should not break schema. ([27c61f8](https://github.com/yaacovCR/graphql-tools-fork/commit/27c61f8))
+
+
+### Features
+
+* **cloning:** export methods to shallow clone types and directives and deep clone schemas ([1fc62ee](https://github.com/yaacovCR/graphql-tools-fork/commit/1fc62ee))
+* **filterSchema:** provide type argument to type filter ([68d4c1d](https://github.com/yaacovCR/graphql-tools-fork/commit/68d4c1d))
+* **visitSchema:** export consolidated visitSchema method ([02ff450](https://github.com/yaacovCR/graphql-tools-fork/commit/02ff450))
+
 ### [6.3.7](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.6...v6.3.7) (2019-09-03)
 
 
