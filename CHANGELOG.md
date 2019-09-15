@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.0...v6.4.1) (2019-09-15)
+
+
+### Bug Fixes
+
+* **cloneSchema:** cloneSchema should preserve extensions ([9b97797](https://github.com/yaacovCR/graphql-tools-fork/commit/9b97797))
+
 ## [6.4.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.3.7...v6.4.0) (2019-09-15)
 
 
