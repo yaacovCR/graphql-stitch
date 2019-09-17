@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.1...v6.4.2) (2019-09-17)
+
+
+### Bug Fixes
+
+* **filterSchema:** should not modify original schema. ([9583011](https://github.com/yaacovCR/graphql-tools-fork/commit/9583011))
+* **visitSchema:** visitSchema must reinitialize private variables when updating interfaces. ([c3bbeaf](https://github.com/yaacovCR/graphql-tools-fork/commit/c3bbeaf))
+
 ### [6.4.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.0...v6.4.1) (2019-09-15)
 
 
