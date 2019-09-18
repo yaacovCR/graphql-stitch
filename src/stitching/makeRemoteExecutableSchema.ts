@@ -29,6 +29,7 @@ import resolveParentFromTypename from './resolveFromParentTypename';
 import defaultMergedResolver from './defaultMergedResolver';
 import { checkResultAndHandleErrors } from './checkResultAndHandleErrors';
 import { observableToAsyncIterable } from './observableToAsyncIterable';
+import mapAsyncIterator from './mapAsyncIterator';
 import { Options as PrintSchemaOptions } from 'graphql/utilities/schemaPrinter';
 
 export type ResolverFn = (
@@ -181,7 +182,9 @@ function createSubscriptionResolver(name: string, link: ApolloLink): ResolverFn 
     };
 
     const observable = execute(link, operation);
-
-    return observableToAsyncIterable(observable);
+    const originalAsyncIterator = observableToAsyncIterable(observable);
+    return mapAsyncIterator(originalAsyncIterator, result => ({
+      [info.fieldName]: checkResultAndHandleErrors(result, info),
+    }));
   };
 }
