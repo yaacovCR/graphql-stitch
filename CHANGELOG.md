@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.2...v6.4.3) (2019-09-19)
+
+
+### Bug Fixes
+
+* **release:** v6.4.0-6.4.2 broken ([4733446](https://github.com/yaacovCR/graphql-tools-fork/commit/4733446))
+* **stitching:** observabeToAsyncIterator should preserve graphql errors ([e3ce475](https://github.com/yaacovCR/graphql-tools-fork/commit/e3ce475))
+
 ### [6.4.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.1...v6.4.2) (2019-09-17)
 
 
