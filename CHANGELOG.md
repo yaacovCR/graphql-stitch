@@ -2,9 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# Changes between graphql-tool-fork v6.4.3 and graphql-tools 4.0.5
+### [6.4.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.3...v6.4.4) (2019-09-24)
 
-Because changes from upstream repository were rebased onto master, tags are out of date. But we did get a consolidated list of changes from the upstream fork for free:
+
+### Bug Fixes
+
+* **remote schemas:** must add __typename to remote query to properly resolve interfaces. ([6e5a707](https://github.com/yaacovCR/graphql-tools-fork/commit/6e5a707))
 
 ## [6.4.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v4.0.5...v6.4.3) (2019-09-24)
 
