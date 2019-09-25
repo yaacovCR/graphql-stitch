@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.4.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.4...v6.4.5) (2019-09-25)
+
+
+### Bug Fixes
+
+* **delegateToSchema:** fix typo breaking refactoring ([cc44841](https://github.com/yaacovCR/graphql-tools-fork/commit/cc44841))
+
 ### [6.4.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.3...v6.4.4) (2019-09-24)
 
 
