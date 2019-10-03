@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.5.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.5.0...v6.5.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* **transforms:** should work with remote schema execution config. ([2661bbd](https://github.com/yaacovCR/graphql-tools-fork/commit/2661bbd))
+
 ## [6.5.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.4.5...v6.5.0) (2019-09-26)
 
 
