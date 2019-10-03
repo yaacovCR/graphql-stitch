@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.6.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.5.1...v6.6.0) (2019-10-03)
+
+
+### Features
+
+* **WrapType:** add WrapType transform ([43f13fc](https://github.com/yaacovCR/graphql-tools-fork/commit/43f13fc))
+
 ### [6.5.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.5.0...v6.5.1) (2019-10-03)
 
 
