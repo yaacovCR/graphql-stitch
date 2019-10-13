@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.6.0...v7.0.0) (2019-10-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **transforms:** Result transforms should be reversed, so that multiple request and result transforms can be properly executed.
+
+Request and result transforms must be inverted when transforming a schema, as these transforms work to move from the final schema back to the original schema.
+
+These CHANGES have the potential to be BREAKING.
+
+### Bug Fixes
+
+* **transforms:** to properly allow chaining. ([b749aeb](https://github.com/yaacovCR/graphql-tools-fork/commit/b749aeb))
+* **types:** enforce VisitSchemaKind enum ([2e60509](https://github.com/yaacovCR/graphql-tools-fork/commit/2e60509))
+
+
+### Features
+
+* **RenameTypes:** remove extra result traversal ([fac833d](https://github.com/yaacovCR/graphql-tools-fork/commit/fac833d))
+
 ## [6.6.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.5.1...v6.6.0) (2019-10-03)
 
 
