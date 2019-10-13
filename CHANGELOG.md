@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.0.0...v7.0.1) (2019-10-13)
+
+
+### Bug Fixes
+
+* **docs:**  expands transforms docs ([bcd55f6](https://github.com/yaacovCR/graphql-tools-fork/commit/bcd55f6))
+* **docs:** use delegateToSchema ([ec00d65](https://github.com/yaacovCR/graphql-tools-fork/commit/ec00d65))
+
 ## [7.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v6.6.0...v7.0.0) (2019-10-13)
 
 
