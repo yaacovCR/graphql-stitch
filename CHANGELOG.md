@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.0.2...v7.0.3) (2019-10-20)
+
+
+### Bug Fixes
+
+* **deps:** correct graphql peer dependency. ([bd2bc0f](https://github.com/yaacovCR/graphql-tools-fork/commit/bd2bc0f))
+
 ### [7.0.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.0.1...v7.0.2) (2019-10-13)
 
 
