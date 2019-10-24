@@ -16,10 +16,8 @@ import {
   GraphQLNonNull,
 } from 'graphql';
 import * as uuid from 'uuid';
-import {
-  forEachField,
-  buildSchemaFromTypeDefinitions,
-} from './makeExecutableSchema';
+import { buildSchemaFromTypeDefinitions } from './makeExecutableSchema';
+import { forEachField } from './utils';
 
 import {
   IMocks,
