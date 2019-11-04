@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.0.3...v7.1.0) (2019-11-04)
+
+
+### Features
+
+* **mergeSchemas:** allow transform specification ([5efafbe](https://github.com/yaacovCR/graphql-tools-fork/commit/5efafbe))
+
 ### [7.0.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.0.2...v7.0.3) (2019-10-20)
 
 
