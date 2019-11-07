@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.1.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.1.2...v7.1.3) (2019-11-07)
+
+
+### Bug Fixes
+
+* **stitching:** latest fix breaks zeros ([1ce8015](https://github.com/yaacovCR/graphql-tools-fork/commit/1ce8015))
+
 ### [7.1.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.1.1...v7.1.2) (2019-11-07)
 
 
