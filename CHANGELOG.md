@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.1.4...v7.2.0) (2019-11-27)
+
+
+### Bug Fixes
+
+* **stitching:** add test ([372dcdd](https://github.com/yaacovCR/graphql-tools-fork/commit/372dcdd))
+* **transforms:** cloneSchema prior to transformSchema ([b2bda0e](https://github.com/yaacovCR/graphql-tools-fork/commit/b2bda0e))
+
+
+### Features
+
+* **mergeTypes:** adds abiliity to merge types ([563cdce](https://github.com/yaacovCR/graphql-tools-fork/commit/563cdce))
+* **mergeTypes:** initial version ([8e9dd52](https://github.com/yaacovCR/graphql-tools-fork/commit/8e9dd52))
+* **stitching:** precompile fragment replacements ([53e3662](https://github.com/yaacovCR/graphql-tools-fork/commit/53e3662))
+
 ### [7.1.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.1.3...v7.1.4) (2019-11-07)
 
 
