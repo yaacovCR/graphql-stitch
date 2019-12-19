@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.2.3...v8.0.0) (2019-12-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **stitching:** Previous version of createMergedResolver did not work with multiple layers of field wrapping.
+extractFields was not working, deprecated in favor of hoistFieldNodes.
+createMergedResolver now relies on two helper functions, dehoistResult, complement to hoistFieldNoes, and unwrapResult, complement to wrapFieldNodes.
+
+### Features
+
+* **WrapFields:** add new transform ([04dc7f1](https://github.com/yaacovCR/graphql-tools-fork/commit/04dc7f1fa9b8bf95a460bf8dade5daf79c50778b))
+
+
+### Bug Fixes
+
+* **stitching:** wrapping and hoisting field transforms ([9ebad82](https://github.com/yaacovCR/graphql-tools-fork/commit/9ebad8245e801957e7025e65dc694b1a708208b4))
+
 ### [7.2.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.2.2...v7.2.3) (2019-12-10)
 
 
