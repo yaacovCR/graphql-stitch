@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.0.0...v8.0.1) (2019-12-25)
+
+
+### Bug Fixes
+
+* **stitching:** filter unused variables from map ([d7f21ae](https://github.com/yaacovCR/graphql-tools-fork/commit/d7f21aec36c89648686ef79e1782b741f1074fbd))
+
 ## [8.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.2.3...v8.0.0) (2019-12-19)
 
 
