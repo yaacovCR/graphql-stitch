@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.1.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.0.2...v8.1.0) (2019-12-31)
+
+
+### Features
+
+* **stitching:** enable proxying uploads ([83f8dd9](https://github.com/yaacovCR/graphql-tools-fork/commit/83f8dd9ed9376392baadcbf4799923c74b93e6ed))
+
 ### [8.0.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.0.0...v8.0.2) (2019-12-26)
 
 
