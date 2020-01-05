@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.1.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.1.0...v8.1.1) (2020-01-05)
+
+
+### Bug Fixes
+
+* **TransformObjectFields/MapFields:** allow more transformations ([daef1e3](https://github.com/yaacovCR/graphql-tools-fork/commit/daef1e305bf82128cddf7138ced8b7e0c962a5d3))
+* **wrapping:** wrapped field names must be unique. ([98601f7](https://github.com/yaacovCR/graphql-tools-fork/commit/98601f7dbfe8320bef2d156f222c7778a62b0a4e))
+
 ## [8.1.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.0.2...v8.1.0) (2019-12-31)
 
 
