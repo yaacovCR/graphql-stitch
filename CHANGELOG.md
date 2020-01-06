@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.1.1...v8.2.0) (2020-01-06)
+
+
+### Features
+
+* **transforms:** add HoistField transform ([becf901](https://github.com/yaacovCR/graphql-tools-fork/commit/becf901561265aa77247c32cfe359679887800a2))
+
 ### [8.1.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.1.0...v8.1.1) (2020-01-05)
 
 
