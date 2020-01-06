@@ -24,7 +24,11 @@ export function cloneType(type: GraphQLNamedType): GraphQLNamedType {
       interfaces: config.interfaces.slice(),
     });
   } else if (type instanceof GraphQLInterfaceType) {
-    return new GraphQLInterfaceType(type.toConfig());
+    const config = type.toConfig();
+    return new GraphQLInterfaceType({
+      ...config,
+      interfaces: config.interfaces.slice(),
+    });
   } else if (type instanceof GraphQLUnionType) {
     const config = type.toConfig();
     return new GraphQLUnionType({

@@ -248,7 +248,7 @@ describe('generating schema from shorthand', () => {
         },
         query: {
           name: 'RootQuery',
-          description: '',
+          description: <string>null,
           fields: [
             {
               name: 'species',

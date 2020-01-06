@@ -276,7 +276,12 @@ const propertyRootTypeDefs = `
     foo: String
   }
 
-  type TestImpl2 implements TestInterface {
+  interface TestNestedInterface implements TestInterface {
+    kind: TestInterfaceKind
+    testString: String
+  }
+
+  type TestImpl2 implements TestNestedInterface & TestInterface {
     kind: TestInterfaceKind
     testString: String
     bar: String
