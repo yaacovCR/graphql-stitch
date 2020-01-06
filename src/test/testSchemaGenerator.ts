@@ -264,7 +264,7 @@ describe('generating schema from shorthand', () => {
         },
         query: {
           name: 'RootQuery',
-          description: '',
+          description: null as string,
           fields: [
             {
               name: 'species',
@@ -1783,7 +1783,7 @@ describe('generating schema from shorthand', () => {
       }, errorMatcher);
     }
 
-    assertFieldError('Bird.id', {});
+    assertFieldError('Query.bird', {});
     assertFieldError('Query.bird', {
       Bird: {
         id: (bird: { id: string }) => bird.id,

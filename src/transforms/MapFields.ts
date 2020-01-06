@@ -9,6 +9,7 @@ import {
   Kind,
   SelectionNode,
   FragmentDefinitionNode,
+  SelectionSetNode,
 } from 'graphql';
 
 import { Request } from '../Interfaces';
@@ -75,7 +76,7 @@ function transformDocument(
   const newDocument: DocumentNode = visit(
     document,
     visitWithTypeInfo(typeInfo, {
-      [Kind.SELECTION_SET]: node => {
+      [Kind.SELECTION_SET]: (node: SelectionSetNode) => {
         const parentType:
           | GraphQLType
           | null
@@ -85,7 +86,7 @@ function transformDocument(
           const fieldNodeTransformers = fieldNodeTransformerMap[parentTypeName];
           let newSelections: Array<SelectionNode> = [];
 
-          node.selections.forEach(selection => {
+          node.selections.forEach((selection: SelectionNode) => {
             if (selection.kind === Kind.FIELD) {
               const fieldName = selection.name.value;
 

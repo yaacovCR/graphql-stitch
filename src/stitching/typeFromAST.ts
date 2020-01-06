@@ -87,6 +87,14 @@ function makeInterfaceType(
   return new GraphQLInterfaceType({
     name: node.name.value,
     fields: () => makeFields(node.fields),
+    interfaces: () =>
+      node.interfaces.map(
+        iface =>
+          createNamedStub(
+            iface.name.value,
+            'interface',
+          ) as GraphQLInterfaceType,
+      ),
     description: getDescription(node, backcompatOptions),
     resolveType: parent => resolveFromParentTypename(parent),
   });

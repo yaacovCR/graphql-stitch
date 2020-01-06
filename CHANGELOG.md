@@ -90,6 +90,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **stitching:** custom scalars/enums ([fd1bd8f](https://github.com/yaacovCR/graphql-tools-fork/commit/fd1bd8fb55a357258e04d026bad661d39b316752))
 
+### Features
+
+* **graphql v15 support** See https://github.com/graphql/graphql-js/issues/2303.
+
 ## [8.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.1.1...v8.2.0) (2020-01-06)
 
 

@@ -567,8 +567,8 @@ describe('filter and rename object fields', () => {
   });
 
   it('should filter', () => {
-    expect(printSchema(transformedPropertySchema)).to.equal(`type New_Location {
-  name: String!
+    expect(printSchema(transformedPropertySchema)).to.equal(`type Query {
+  propertyById(id: ID!): New_Property
 }
 
 type New_Property {
@@ -578,8 +578,8 @@ type New_Property {
   new_error: String
 }
 
-type Query {
-  propertyById(id: ID!): New_Property
+type New_Location {
+  name: String!
 }
 `);
   });
@@ -641,95 +641,11 @@ type Query {
 });
 
 describe('WrapType transform', () => {
-  let transformedPropertySchema: GraphQLSchema;
-
-  before(() => {
-    transformedPropertySchema = transformSchema(propertySchema, [
+  it('should work', async () => {
+    const transformedPropertySchema = transformSchema(propertySchema, [
       new WrapType('Query', 'Namespace_Query', 'namespace'),
     ]);
-  });
 
-  it('should modify the schema', () => {
-    expect(printSchema(transformedPropertySchema)).to.equal(`type Address {
-  street: String
-  city: String
-  state: String
-  zip: String
-}
-
-"""Simple fake datetime"""
-scalar DateTime
-
-input InputWithDefault {
-  test: String = "Foo"
-}
-
-"""
-The \`JSON\` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
-
-type Location {
-  name: String!
-}
-
-type Namespace_Query {
-  propertyById(id: ID!): Property
-  properties(limit: Int): [Property!]
-  contextTest(key: String!): String
-  dateTimeTest: DateTime
-  jsonTest(input: JSON): JSON
-  interfaceTest(kind: TestInterfaceKind): TestInterface
-  unionTest(output: String): TestUnion
-  errorTest: String
-  errorTestNonNull: String!
-  relay: Query!
-  defaultInputTest(input: InputWithDefault!): String
-}
-
-type Property {
-  id: ID!
-  name: String!
-  location: Location
-  address: Address
-  error: String
-}
-
-type Query {
-  namespace: Namespace_Query
-}
-
-type TestImpl1 implements TestInterface {
-  kind: TestInterfaceKind
-  testString: String
-  foo: String
-}
-
-type TestImpl2 implements TestInterface {
-  kind: TestInterfaceKind
-  testString: String
-  bar: String
-}
-
-interface TestInterface {
-  kind: TestInterfaceKind
-  testString: String
-}
-
-enum TestInterfaceKind {
-  ONE
-  TWO
-}
-
-union TestUnion = TestImpl1 | UnionImpl
-
-type UnionImpl {
-  someField: String
-}
-`);
-  });
-
-  it('should work', async () => {
     const result = await graphql(
       transformedPropertySchema,
       `
@@ -776,111 +692,6 @@ type UnionImpl {
         },
       ],
     });
-  });
-});
-
-describe('ExtendSchema transform', () => {
-  let transformedPropertySchema: GraphQLSchema;
-
-  before(() => {
-    transformedPropertySchema = transformSchema(propertySchema, [
-      new ExtendSchema({
-        typeDefs: `
-          extend type Property {
-            locationName: String
-            wrap: Wrap
-          }
-
-          type Wrap {
-            id: ID
-            name: String
-          }
-        `,
-      }),
-    ]);
-  });
-
-  it('should work', () => {
-    expect(printSchema(transformedPropertySchema)).to.equal(`type Address {
-  street: String
-  city: String
-  state: String
-  zip: String
-}
-
-"""Simple fake datetime"""
-scalar DateTime
-
-input InputWithDefault {
-  test: String = "Foo"
-}
-
-"""
-The \`JSON\` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
-
-type Location {
-  name: String!
-}
-
-type Property {
-  id: ID!
-  name: String!
-  location: Location
-  address: Address
-  error: String
-  locationName: String
-  wrap: Wrap
-}
-
-type Query {
-  propertyById(id: ID!): Property
-  properties(limit: Int): [Property!]
-  contextTest(key: String!): String
-  dateTimeTest: DateTime
-  jsonTest(input: JSON): JSON
-  interfaceTest(kind: TestInterfaceKind): TestInterface
-  unionTest(output: String): TestUnion
-  errorTest: String
-  errorTestNonNull: String!
-  relay: Query!
-  defaultInputTest(input: InputWithDefault!): String
-}
-
-type TestImpl1 implements TestInterface {
-  kind: TestInterfaceKind
-  testString: String
-  foo: String
-}
-
-type TestImpl2 implements TestInterface {
-  kind: TestInterfaceKind
-  testString: String
-  bar: String
-}
-
-interface TestInterface {
-  kind: TestInterfaceKind
-  testString: String
-}
-
-enum TestInterfaceKind {
-  ONE
-  TWO
-}
-
-union TestUnion = TestImpl1 | UnionImpl
-
-type UnionImpl {
-  someField: String
-}
-
-type Wrap {
-  id: ID
-  name: String
-}
-`);
   });
 });
 
@@ -1424,11 +1235,11 @@ describe('mergeSchemas', () => {
   it('can merge default input types', async () => {
     const schema = makeExecutableSchema({
       typeDefs: `
-        input InputWithDefault {
-          field: String = "test"
-        }
         type Query {
           getInput(input: InputWithDefault!): String
+        }
+        input InputWithDefault {
+          field: String = "test"
         }
       `,
       resolvers: {

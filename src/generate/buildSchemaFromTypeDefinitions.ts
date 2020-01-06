@@ -1,6 +1,5 @@
 import {
   parse,
-  extendSchema,
   buildASTSchema,
   GraphQLSchema,
   DocumentNode,
@@ -9,7 +8,6 @@ import {
 
 import { ITypeDefinitions, GraphQLParseOptions } from '../Interfaces';
 
-import extractExtensionDefinitions from './extractExtensionDefinitions';
 import concatenateTypeDefs from './concatenateTypeDefs';
 import SchemaError from './SchemaError';
 
@@ -40,16 +38,7 @@ function buildSchemaFromTypeDefinitions(
   const backcompatOptions = { commentDescriptions: true };
 
   // TODO fix types https://github.com/apollographql/graphql-tools/issues/542
-  let schema: GraphQLSchema = (buildASTSchema as any)(
-    astDocument,
-    backcompatOptions,
-  );
-
-  const extensionsAst = extractExtensionDefinitions(astDocument);
-  if (extensionsAst.definitions.length > 0) {
-    // TODO fix types https://github.com/apollographql/graphql-tools/issues/542
-    schema = (extendSchema as any)(schema, extensionsAst, backcompatOptions);
-  }
+  const schema: GraphQLSchema = buildASTSchema(astDocument, backcompatOptions);
 
   return schema;
 }
