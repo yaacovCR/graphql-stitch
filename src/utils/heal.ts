@@ -117,12 +117,12 @@ export function healTypes(
   }
 
   function healNamedType(type: GraphQLNamedType) {
-    if (type instanceof GraphQLObjectType) {
+    if (
+      type instanceof GraphQLObjectType ||
+      type instanceof GraphQLInterfaceType
+    ) {
       healFields(type);
       healInterfaces(type);
-      return;
-    } else if (type instanceof GraphQLInterfaceType) {
-      healFields(type);
       return;
     } else if (type instanceof GraphQLUnionType) {
       healUnderlyingTypes(type);
@@ -151,7 +151,7 @@ export function healTypes(
     });
   }
 
-  function healInterfaces(type: GraphQLObjectType) {
+  function healInterfaces(type: GraphQLObjectType | GraphQLInterfaceType) {
     updateEachKey(type.getInterfaces(), iface => {
       const healedType = healType(iface) as GraphQLInterfaceType;
       return healedType;
@@ -209,7 +209,10 @@ function pruneTypes(
 ) {
   const implementedInterfaces = {};
   each(typeMap, namedType => {
-    if (namedType instanceof GraphQLObjectType) {
+    if (
+      namedType instanceof GraphQLObjectType ||
+      namedType instanceof GraphQLInterfaceType
+    ) {
       each(namedType.getInterfaces(), iface => {
         implementedInterfaces[iface.name] = true;
       });

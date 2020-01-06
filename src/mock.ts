@@ -105,7 +105,6 @@ function addMocksToSchema({
     ): any => {
       // nullability doesn't matter for the purpose of mocking.
       const fieldType = getNullableType(type);
-      const namedFieldType = getNamedType(fieldType);
 
       if (fieldName && root && typeof root[fieldName] !== 'undefined') {
         let result: any;
@@ -129,7 +128,11 @@ function addMocksToSchema({
 
         // Now we merge the result with the default mock for this type.
         // This allows overriding defaults while writing very little code.
-        if (mockFunctionMap.has(namedFieldType.name)) {
+        const namedFieldType: GraphQLNamedType = getNamedType(fieldType);
+        if (
+          namedFieldType != null &&
+          mockFunctionMap.has(namedFieldType.name)
+        ) {
           const mock = mockFunctionMap.get(namedFieldType.name);
 
           result = mergeMocks(
@@ -200,7 +203,7 @@ function addMocksToSchema({
       // if we get to here, we don't have a value, and we don't have a mock for this type,
       // we could return undefined, but that would be hard to debug, so we throw instead.
       // however, we returning it instead of throwing it, so preserveResolvers can handle the failures.
-      return Error(`No mock defined for type "${fieldType.name}"`);
+      return Error(`No mock defined for type "${fieldType.name as string}"`);
     };
   };
 
@@ -369,7 +372,7 @@ function getResolveType(namedFieldType: GraphQLNamedType) {
 
 function assignResolveType(type: GraphQLType, preserveResolvers: boolean) {
   const fieldType = getNullableType(type);
-  const namedFieldType = getNamedType(fieldType);
+  const namedFieldType: GraphQLNamedType = getNamedType(fieldType);
 
   const oldResolveType = getResolveType(namedFieldType);
   if (preserveResolvers && oldResolveType != null && oldResolveType.length) {
@@ -377,8 +380,9 @@ function assignResolveType(type: GraphQLType, preserveResolvers: boolean) {
   }
 
   if (
-    namedFieldType instanceof GraphQLUnionType ||
-    namedFieldType instanceof GraphQLInterfaceType
+    namedFieldType != null &&
+    (namedFieldType instanceof GraphQLUnionType ||
+      namedFieldType instanceof GraphQLInterfaceType)
   ) {
     // the default `resolveType` always returns null. We add a fallback
     // resolution that works with how unions and interface are mocked
