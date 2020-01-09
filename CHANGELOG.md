@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.2.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.2.0...v8.2.1) (2020-01-09)
+
+
+### Bug Fixes
+
+* **stitching:** custom scalars/enums ([fd1bd8f](https://github.com/yaacovCR/graphql-tools-fork/commit/fd1bd8fb55a357258e04d026bad661d39b316752))
+
 ## [8.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.1.1...v8.2.0) (2020-01-06)
 
 
