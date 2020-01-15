@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.2.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.2.1...v8.2.2) (2020-01-15)
+
+
+### Bug Fixes
+
+* **stitching:** do not make sync delegation async ([cb61a36](https://github.com/yaacovCR/graphql-tools-fork/commit/cb61a36995781e5e110aeb4957dbf23c316f2a92)), closes [#36](https://github.com/yaacovCR/graphql-tools-fork/issues/36)
+
 ### [8.2.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.2.0...v8.2.1) (2020-01-09)
 
 
