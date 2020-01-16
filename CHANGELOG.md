@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.3.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.2.2...v8.3.0) (2020-01-16)
+
+
+### Features
+
+* **stitching:** add returnType option to delegateToSchema ([abe0ee8](https://github.com/yaacovCR/graphql-tools-fork/commit/abe0ee84ebe23daefed2344f7c16c46b60d9b0b1)), closes [#33](https://github.com/yaacovCR/graphql-tools-fork/issues/33)
+* **stitching:** export createDelegatingRequest and delegateRequest methods. ([a665eb9](https://github.com/yaacovCR/graphql-tools-fork/commit/a665eb90f51163ccf9c71e78906b58dada0d8bbf))
+
+
+### Bug Fixes
+
+* **healing:** empty types should be pruned even if fields of those types still exist ([3545d73](https://github.com/yaacovCR/graphql-tools-fork/commit/3545d73f729bcb40487df4d1850effff29a486fb)), closes [#37](https://github.com/yaacovCR/graphql-tools-fork/issues/37)
+
 ### [8.2.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.2.1...v8.2.2) (2020-01-15)
 
 
