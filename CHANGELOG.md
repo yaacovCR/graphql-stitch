@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.3.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.0...v8.3.1) (2020-01-20)
+
+
+### Bug Fixes
+
+* **transforms:** refactor TransformRootFields to allow flexible transform ordering ([aa02c47](https://github.com/yaacovCR/graphql-tools-fork/commit/aa02c47d5103b55a3bcf7af51a6c6b64451cd407)), closes [#27](https://github.com/yaacovCR/graphql-tools-fork/issues/27)
+
 ## [8.3.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.2.2...v8.3.0) (2020-01-16)
 
 
