@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.3.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.1...v8.3.2) (2020-01-21)
+
+
+### Bug Fixes
+
+* **delegateToSchema:** standardize args format ([1a7ffc8](https://github.com/yaacovCR/graphql-tools-fork/commit/1a7ffc8aa43feb6af71212a3f151ddd30881b660)), closes [#34](https://github.com/yaacovCR/graphql-tools-fork/issues/34) [/github.com/yaacovCR/graphql-tools-fork/commit/fd1bd8fb55a357258e04d026bad661d39b316752#diff-06b180be3290dd53bea4c1c98c9dfdd2](https://github.com/yaacovCR//github.com/yaacovCR/graphql-tools-fork/commit/fd1bd8fb55a357258e04d026bad661d39b316752/issues/diff-06b180be3290dd53bea4c1c98c9dfdd2)
+
 ### [8.3.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.0...v8.3.1) (2020-01-20)
 
 
