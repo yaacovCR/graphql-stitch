@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.4.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.4...v8.4.0) (2020-01-23)
+
+
+### Features
+
+* **stitching:** support advanced type merging ([3bdc30e](https://github.com/yaacovCR/graphql-tools-fork/commit/3bdc30e1b1f1b431578b208f917a13b2f613540c))
+
 ### [8.3.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.3...v8.3.4) (2020-01-22)
 
 ### [8.3.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.2...v8.3.3) (2020-01-21)
