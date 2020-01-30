@@ -28,7 +28,7 @@ import {
   ITypeDefinitions,
 } from './Interfaces';
 
-// This function wraps addMockFunctionsToSchema for more convenience
+// This function wraps addMocksToSchema for more convenience
 function mockServer(
   schema: GraphQLSchema | ITypeDefinitions,
   mocks: IMocks,
@@ -42,7 +42,7 @@ function mockServer(
     mySchema = schema;
   }
 
-  addMockFunctionsToSchema({ schema: mySchema, mocks, preserveResolvers });
+  addMocksToSchema({ schema: mySchema, mocks, preserveResolvers });
 
   return { query: (query, vars) => graphql(mySchema, query, {}, {}, vars) };
 }
@@ -57,7 +57,7 @@ defaultMockMap.set('ID', () => uuid.v4());
 // TODO allow providing a seed such that lengths of list could be deterministic
 // this could be done by using casual to get a random list length if the casual
 // object is global.
-function addMockFunctionsToSchema({
+function addMocksToSchema({
   schema,
   mocks = {},
   preserveResolvers = false,
@@ -446,4 +446,5 @@ class MockList {
   }
 }
 
-export { addMockFunctionsToSchema, MockList, mockServer };
+// retain addMockFunctionsToSchema for backwards compatibility
+export { addMocksToSchema, addMocksToSchema as addMockFunctionsToSchema, MockList, mockServer };

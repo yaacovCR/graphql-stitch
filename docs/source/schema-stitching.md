@@ -20,7 +20,7 @@ In this example we'll stitch together two very simple schemas. In this case, we'
 ```js
 import {
   makeExecutableSchema,
-  addMockFunctionsToSchema,
+  addMocksToSchema,
   mergeSchemas,
 } from 'graphql-tools';
 
@@ -42,7 +42,7 @@ const chirpSchema = makeExecutableSchema({
   `
 });
 
-addMockFunctionsToSchema({ schema: chirpSchema });
+addMocksToSchema({ schema: chirpSchema });
 
 // Mocked author schema
 const authorSchema = makeExecutableSchema({
@@ -58,7 +58,7 @@ const authorSchema = makeExecutableSchema({
   `
 });
 
-addMockFunctionsToSchema({ schema: authorSchema });
+addMocksToSchema({ schema: authorSchema });
 
 export const schema = mergeSchemas({
   subschemas: [
@@ -181,7 +181,7 @@ For example, suppose we transform the `chirpSchema` by removing the `chirpsByAut
 ```ts
 import {
   makeExecutableSchema,
-  addMockFunctionsToSchema,
+  addMocksToSchema,
   mergeSchemas,
   FilterRootFields,
   RenameTypes,
@@ -206,7 +206,7 @@ const chirpSchema = makeExecutableSchema({
   `
 });
 
-addMockFunctionsToSchema({ schema: chirpSchema });
+addMocksToSchema({ schema: chirpSchema });
 
 // create transforms
 
