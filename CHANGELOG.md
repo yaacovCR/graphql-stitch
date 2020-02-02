@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.5.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.4.0...v8.5.0) (2020-02-02)
+
+
+### Features
+
+* **delegation:** selectionSet option ([338fdd0](https://github.com/yaacovCR/graphql-tools-fork/commit/338fdd065ef53941aea1c56ccc2a295827e31ac8))
+* **merging:** allow keys for merged types to also include subfields ([cc0cc91](https://github.com/yaacovCR/graphql-tools-fork/commit/cc0cc9159ac2f706a70eaa03ffb53c2149890d5f))
+* **merging:** check subschema rather than fragment for merging ([299a21f](https://github.com/yaacovCR/graphql-tools-fork/commit/299a21f7ff9417382ea735c3b3a3f7aee0f626e2))
+* **merging:** merge additional types besides GraphQLObjectTypes ([574ff85](https://github.com/yaacovCR/graphql-tools-fork/commit/574ff85afb28ae880ae5a1e43aead9cd490b34c1))
+* **merging:** set up default mergeTypeResolver ([eea77bb](https://github.com/yaacovCR/graphql-tools-fork/commit/eea77bb809891339ee7bc608e59bac08bac815cf))
+
+
+### Bug Fixes
+
+* **merging:** fixes merging for non root types ([7093f10](https://github.com/yaacovCR/graphql-tools-fork/commit/7093f100c8895ff61642e3da8afc91bfe0eba4ee))
+* **merging:** use proper collectFields when possible ([5b6b082](https://github.com/yaacovCR/graphql-tools-fork/commit/5b6b082b1d569c1730e6106fde834905baeaf4b8))
+* **stitching:** add arguments as variables ([82ed841](https://github.com/yaacovCR/graphql-tools-fork/commit/82ed841466058439204a36133331e7491e06d7a8))
+
 ## [8.4.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.3.4...v8.4.0) (2020-01-23)
 
 
