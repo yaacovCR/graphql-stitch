@@ -72,7 +72,7 @@ export function observableToAsyncIterable<T>(observable: Observable<T>): AsyncIt
       emptyQueue();
       return Promise.reject(error);
     },
-    [$$asyncIterator]() {
+    [$$asyncIterator as typeof Symbol.asyncIterator]() {
       return this;
     },
   };

@@ -45,6 +45,15 @@ function buildSchemaFromTypeDefinitions(
 
   const extensionsAst = extractExtensionDefinitions(astDocument);
   if (extensionsAst.definitions.length > 0) {
+    (extensionsAst as any).definitions = extensionsAst.definitions.filter(a => {
+      if ('name' in a) {
+        const type = schema.getType(a.name.value);
+        if (type && type.extensionASTNodes) {
+          return !type.extensionASTNodes.includes(a as any);
+        }
+      }
+      return true;
+    });
     // TODO fix types https://github.com/apollographql/graphql-tools/issues/542
     schema = (extendSchema as any)(schema, extensionsAst, backcompatOptions);
   }
