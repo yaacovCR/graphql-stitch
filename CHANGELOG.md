@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.5.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.0...v8.5.1) (2020-02-04)
+
+
+### Bug Fixes
+
+* **stitching:** pass context ([ff556c3](https://github.com/yaacovCR/graphql-tools-fork/commit/ff556c3064456024edd0bf3bd369bc2e3cfb2b7b)), closes [#30](https://github.com/yaacovCR/graphql-tools-fork/issues/30)
+
 ## [8.5.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.4.0...v8.5.0) (2020-02-02)
 
 
