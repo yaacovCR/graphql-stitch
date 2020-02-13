@@ -1,10 +1,4 @@
-import { Fetcher } from '../Interfaces';
-
-import { combineErrors } from './errors';
-import linkToFetcher from './linkToFetcher';
-
 import { ApolloLink } from 'apollo-link';
-
 import {
   GraphQLSchema,
   DocumentNode,
@@ -12,6 +6,11 @@ import {
   buildClientSchema,
   parse,
 } from 'graphql';
+
+import { Fetcher } from '../Interfaces';
+
+import { combineErrors } from './errors';
+import linkToFetcher from './linkToFetcher';
 
 const parsedIntrospectionQuery: DocumentNode = parse(introspectionQuery);
 

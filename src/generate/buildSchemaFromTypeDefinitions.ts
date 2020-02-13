@@ -1,9 +1,3 @@
-import { ITypeDefinitions, GraphQLParseOptions } from '../Interfaces';
-
-import extractExtensionDefinitions from './extractExtensionDefinitions';
-import concatenateTypeDefs from './concatenateTypeDefs';
-import SchemaError from './SchemaError';
-
 import {
   parse,
   extendSchema,
@@ -12,6 +6,12 @@ import {
   DocumentNode,
   ASTNode,
 } from 'graphql';
+
+import { ITypeDefinitions, GraphQLParseOptions } from '../Interfaces';
+
+import extractExtensionDefinitions from './extractExtensionDefinitions';
+import concatenateTypeDefs from './concatenateTypeDefs';
+import SchemaError from './SchemaError';
 
 function buildSchemaFromTypeDefinitions(
   typeDefinitions: ITypeDefinitions,
