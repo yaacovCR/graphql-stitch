@@ -1,15 +1,17 @@
+import { ITypeDefinitions, GraphQLParseOptions } from '../Interfaces';
+
+import extractExtensionDefinitions from './extractExtensionDefinitions';
+import concatenateTypeDefs from './concatenateTypeDefs';
+import SchemaError from './SchemaError';
+
 import {
   parse,
   extendSchema,
   buildASTSchema,
   GraphQLSchema,
   DocumentNode,
+  ASTNode,
 } from 'graphql';
-import { ITypeDefinitions, GraphQLParseOptions } from '../Interfaces';
-
-import extractExtensionDefinitions from './extractExtensionDefinitions';
-import concatenateTypeDefs from './concatenateTypeDefs';
-import SchemaError from './SchemaError';
 
 function buildSchemaFromTypeDefinitions(
   typeDefinitions: ITypeDefinitions,
@@ -55,7 +57,7 @@ function buildSchemaFromTypeDefinitions(
 function isDocumentNode(
   typeDefinitions: ITypeDefinitions,
 ): typeDefinitions is DocumentNode {
-  return (<DocumentNode>typeDefinitions).kind !== undefined;
+  return (typeDefinitions as ASTNode).kind !== undefined;
 }
 
 export default buildSchemaFromTypeDefinitions;

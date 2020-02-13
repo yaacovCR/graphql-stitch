@@ -1,3 +1,15 @@
+import { buildSchemaFromTypeDefinitions } from './makeExecutableSchema';
+import { forEachField } from './utils';
+
+import {
+  IMocks,
+  IMockServer,
+  IMockOptions,
+  IMockFn,
+  IMockTypeFn,
+  ITypeDefinitions,
+} from './Interfaces';
+
 import {
   graphql,
   GraphQLSchema,
@@ -15,18 +27,7 @@ import {
   GraphQLFieldResolver,
   GraphQLNonNull,
 } from 'graphql';
-import * as uuid from 'uuid';
-import { buildSchemaFromTypeDefinitions } from './makeExecutableSchema';
-import { forEachField } from './utils';
-
-import {
-  IMocks,
-  IMockServer,
-  IMockOptions,
-  IMockFn,
-  IMockTypeFn,
-  ITypeDefinitions,
-} from './Interfaces';
+import { v4 as uuid } from 'uuid';
 
 // This function wraps addMocksToSchema for more convenience
 function mockServer(
@@ -52,7 +53,7 @@ defaultMockMap.set('Int', () => Math.round(Math.random() * 200) - 100);
 defaultMockMap.set('Float', () => Math.random() * 200 - 100);
 defaultMockMap.set('String', () => 'Hello World');
 defaultMockMap.set('Boolean', () => Math.random() > 0.5);
-defaultMockMap.set('ID', () => uuid.v4());
+defaultMockMap.set('ID', () => uuid());
 
 // TODO allow providing a seed such that lengths of list could be deterministic
 // this could be done by using casual to get a random list length if the casual
@@ -86,7 +87,7 @@ function addMocksToSchema({
 
   const mockType = function(
     type: GraphQLType,
-    typeName?: string,
+    _typeName?: string,
     fieldName?: string,
   ): GraphQLFieldResolver<any, any> {
     // order of precendence for mocking:
@@ -106,7 +107,7 @@ function addMocksToSchema({
       const fieldType = getNullableType(type);
       const namedFieldType = getNamedType(fieldType);
 
-      if (root && typeof root[fieldName] !== 'undefined') {
+      if (fieldName && root && typeof root[fieldName] !== 'undefined') {
         let result: any;
 
         // if we're here, the field is already defined
@@ -129,10 +130,10 @@ function addMocksToSchema({
         // Now we merge the result with the default mock for this type.
         // This allows overriding defaults while writing very little code.
         if (mockFunctionMap.has(namedFieldType.name)) {
+          const mock = mockFunctionMap.get(namedFieldType.name);
+
           result = mergeMocks(
-            mockFunctionMap
-              .get(namedFieldType.name)
-              .bind(null, root, args, context, info),
+            mock.bind(null, root, args, context, info),
             result,
           );
         }
@@ -156,7 +157,8 @@ function addMocksToSchema({
         )
       ) {
         // the object passed doesn't have this field, so we apply the default mock
-        return mockFunctionMap.get(fieldType.name)(root, args, context, info);
+        const mock = mockFunctionMap.get(fieldType.name);
+        return mock(root, args, context, info);
       }
       if (fieldType instanceof GraphQLObjectType) {
         // objects don't return actual data, we only need to mock scalars!
@@ -170,12 +172,8 @@ function addMocksToSchema({
       ) {
         let implementationType;
         if (mockFunctionMap.has(fieldType.name)) {
-          const interfaceMockObj = mockFunctionMap.get(fieldType.name)(
-            root,
-            args,
-            context,
-            info,
-          );
+          const mock = mockFunctionMap.get(fieldType.name);
+          const interfaceMockObj = mock(root, args, context, info);
           if (!interfaceMockObj || !interfaceMockObj.__typename) {
             return Error(`Please return a __typename in "${fieldType.name}"`);
           }
@@ -184,10 +182,10 @@ function addMocksToSchema({
           const possibleTypes = schema.getPossibleTypes(fieldType);
           implementationType = getRandomElement(possibleTypes);
         }
-        return Object.assign(
-          { __typename: implementationType },
-          mockType(implementationType)(root, args, context, info),
-        );
+        return {
+          __typename: implementationType,
+          ...mockType(implementationType)(root, args, context, info),
+        };
       }
 
       if (fieldType instanceof GraphQLEnumType) {
@@ -195,7 +193,8 @@ function addMocksToSchema({
       }
 
       if (defaultMockMap.has(fieldType.name)) {
-        return defaultMockMap.get(fieldType.name)(root, args, context, info);
+        const defaultMock = defaultMockMap.get(fieldType.name);
+        return defaultMock(root, args, context, info);
       }
 
       // if we get to here, we don't have a value, and we don't have a mock for this type,
@@ -209,13 +208,15 @@ function addMocksToSchema({
     schema,
     (field: GraphQLField<any, any>, typeName: string, fieldName: string) => {
       assignResolveType(field.type, preserveResolvers);
-      let mockResolver: GraphQLFieldResolver<any, any>;
+      let mockResolver: GraphQLFieldResolver<any, any> = mockType(field.type, typeName, fieldName);
 
       // we have to handle the root mutation and root query types differently,
       // because no resolver is called at the root.
-      /* istanbul ignore next: Must provide schema DefinitionNode with query type or a type named Query. */
-      const isOnQueryType: boolean = schema.getQueryType() && schema.getQueryType().name === typeName;
-      const isOnMutationType: boolean = schema.getMutationType() && schema.getMutationType().name === typeName;
+      const queryType = schema.getQueryType();
+      const isOnQueryType = (queryType != null) && (queryType.name === typeName);
+
+      const mutationType = schema.getMutationType();
+      const isOnMutationType = (mutationType != null) && (mutationType.name === typeName);
 
       if (isOnQueryType || isOnMutationType) {
         if (mockFunctionMap.has(typeName)) {
@@ -228,7 +229,7 @@ function addMocksToSchema({
               context: any,
               info: GraphQLResolveInfo,
             ) => {
-              const updatedRoot = root || {}; // TODO: should we clone instead?
+              const updatedRoot = root ?? {}; // TODO: should we clone instead?
               updatedRoot[fieldName] = rootMock(root, args, context, info)[
                 fieldName
               ];
@@ -247,18 +248,15 @@ function addMocksToSchema({
           }
         }
       }
-      if (!mockResolver) {
-        mockResolver = mockType(field.type, typeName, fieldName);
-      }
       if (!preserveResolvers || !field.resolve) {
         field.resolve = mockResolver;
       } else {
         const oldResolver = field.resolve;
         field.resolve = (
-          rootObject?: any,
-          args?: { [key: string]: any },
-          context?: any,
-          info?: GraphQLResolveInfo,
+          rootObject: any,
+          args: { [key: string]: any },
+          context: any,
+          info: GraphQLResolveInfo,
         ) =>
           Promise.all([
             mockResolver(rootObject, args, context, info),
@@ -304,26 +302,27 @@ function getRandomElement(ary: ReadonlyArray<any>) {
   return ary[sample];
 }
 
-function mergeObjects(a: Object, b: Object) {
+function mergeObjects(a: Record<string, any>, b: Record<string, any>) {
   return Object.assign(a, b);
 }
 
-function copyOwnPropsIfNotPresent(target: Object, source: Object) {
+function copyOwnPropsIfNotPresent(target: Record<string, any>, source: Record<string, any>) {
   Object.getOwnPropertyNames(source).forEach(prop => {
     if (!Object.getOwnPropertyDescriptor(target, prop)) {
+      const propertyDescriptor = Object.getOwnPropertyDescriptor(source, prop);
       Object.defineProperty(
         target,
         prop,
-        Object.getOwnPropertyDescriptor(source, prop),
+        (propertyDescriptor == null) ? {} : propertyDescriptor,
       );
     }
   });
 }
 
-function copyOwnProps(target: Object, ...sources: Object[]) {
+function copyOwnProps(target: Record<string, any>, ...sources: Array<Record<string, any>>) {
   sources.forEach(source => {
     let chain = source;
-    while (chain) {
+    while (chain != null) {
       copyOwnPropsIfNotPresent(target, chain);
       chain = Object.getPrototypeOf(chain);
     }
@@ -351,8 +350,6 @@ function getResolveType(namedFieldType: GraphQLNamedType) {
     namedFieldType instanceof GraphQLUnionType
   ) {
     return namedFieldType.resolveType;
-  } else {
-    return undefined;
   }
 }
 
@@ -361,7 +358,7 @@ function assignResolveType(type: GraphQLType, preserveResolvers: boolean) {
   const namedFieldType = getNamedType(fieldType);
 
   const oldResolveType = getResolveType(namedFieldType);
-  if (preserveResolvers && oldResolveType && oldResolveType.length) {
+  if (preserveResolvers && (oldResolveType != null) && oldResolveType.length) {
     return;
   }
 
@@ -373,21 +370,19 @@ function assignResolveType(type: GraphQLType, preserveResolvers: boolean) {
     // resolution that works with how unions and interface are mocked
     namedFieldType.resolveType = (
       data: any,
-      context: any,
+      _context: any,
       info: GraphQLResolveInfo,
-    ) => {
-      return info.schema.getType(data.__typename) as GraphQLObjectType;
-    };
+    ) => info.schema.getType(data.__typename) as GraphQLObjectType;
   }
 }
 
 class MockList {
-  private len: number | number[];
-  private wrappedFunction: GraphQLFieldResolver<any, any>;
+  private readonly len: number | Array<number>;
+  private readonly wrappedFunction: GraphQLFieldResolver<any, any> | undefined;
 
   // wrappedFunction can return another MockList or a value
   constructor(
-    len: number | number[],
+    len: number | Array<number>,
     wrappedFunction?: GraphQLFieldResolver<any, any>,
   ) {
     this.len = len;
@@ -409,7 +404,7 @@ class MockList {
     fieldType: GraphQLList<any>,
     mockTypeFunc: IMockTypeFn,
   ) {
-    let arr: any[];
+    let arr: Array<any>;
     if (Array.isArray(this.len)) {
       arr = new Array(this.randint(this.len[0], this.len[1]));
     } else {
