@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [9.0.0-graphql-15.0.0-rc.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.4...v9.0.0-graphql-15.0.0-rc.2.0) (2020-02-14)
 
+## [9.0.0-graphql-15.0.0-rc.2.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.4...v9.0.0-graphql-15.0.0-rc.2.0) (2020-02-14)
+
 ### [8.5.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.3...v8.5.4) (2020-02-13)
 
 ### [8.5.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.2...v8.5.3) (2020-02-13)
