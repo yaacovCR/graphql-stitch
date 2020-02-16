@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.5.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.4...v8.5.5) (2020-02-16)
+
+
+### Bug Fixes
+
+* **transformSchema:** handle schemaConfig objects ([0c796b7](https://github.com/yaacovCR/graphql-tools-fork/commit/0c796b7461c59d7bf6a7495ff034a8c0ec4e20c6))
+
 ### [8.5.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.3...v8.5.4) (2020-02-13)
 
 ### [8.5.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.2...v8.5.3) (2020-02-13)
