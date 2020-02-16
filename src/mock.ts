@@ -14,6 +14,7 @@ import {
   GraphQLNamedType,
   GraphQLFieldResolver,
   GraphQLNonNull,
+  GraphQLNullableType,
 } from 'graphql';
 import { v4 as uuid } from 'uuid';
 
@@ -104,8 +105,7 @@ function addMocksToSchema({
       info: GraphQLResolveInfo,
     ): any => {
       // nullability doesn't matter for the purpose of mocking.
-      const fieldType = getNullableType(type);
-      const namedFieldType = getNamedType(fieldType);
+      const fieldType = getNullableType(type) as GraphQLNullableType;
 
       if (fieldName && root && typeof root[fieldName] !== 'undefined') {
         let result: any;
@@ -129,6 +129,7 @@ function addMocksToSchema({
 
         // Now we merge the result with the default mock for this type.
         // This allows overriding defaults while writing very little code.
+        const namedFieldType = getNamedType(fieldType);
         if (mockFunctionMap.has(namedFieldType.name)) {
           const mock = mockFunctionMap.get(namedFieldType.name);
 
@@ -368,7 +369,7 @@ function getResolveType(namedFieldType: GraphQLNamedType) {
 }
 
 function assignResolveType(type: GraphQLType, preserveResolvers: boolean) {
-  const fieldType = getNullableType(type);
+  const fieldType = getNullableType(type) as GraphQLNullableType;
   const namedFieldType = getNamedType(fieldType);
 
   const oldResolveType = getResolveType(namedFieldType);

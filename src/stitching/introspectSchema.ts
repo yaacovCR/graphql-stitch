@@ -2,7 +2,7 @@ import { ApolloLink } from 'apollo-link';
 import {
   GraphQLSchema,
   DocumentNode,
-  introspectionQuery,
+  getIntrospectionQuery,
   buildClientSchema,
   parse,
 } from 'graphql';
@@ -12,7 +12,7 @@ import { Fetcher } from '../Interfaces';
 import { combineErrors } from './errors';
 import linkToFetcher from './linkToFetcher';
 
-const parsedIntrospectionQuery: DocumentNode = parse(introspectionQuery);
+const parsedIntrospectionQuery: DocumentNode = parse(getIntrospectionQuery());
 
 export default function introspectSchema(
   linkOrFetcher: ApolloLink | Fetcher,
