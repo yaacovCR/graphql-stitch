@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.6.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.5...v8.6.0) (2020-02-17)
+
+
+### Features
+
+* **graphql:** initial v15 support. ([4034560](https://github.com/yaacovCR/graphql-tools-fork/commit/4034560a29c7097843fe173806f74d63790e6e2b))
+* **graphql:** interfaces implementing interfaces ([b0241b7](https://github.com/yaacovCR/graphql-tools-fork/commit/b0241b7f42d942905e40897dcf0478a0d11b182c))
+
+
+### Bug Fixes
+
+* **ci:** fix types ([459ddfe](https://github.com/yaacovCR/graphql-tools-fork/commit/459ddfec92d335aa84467cc5f66d815fab093c91))
+* **typo:** caused by prettier? ([11351e2](https://github.com/yaacovCR/graphql-tools-fork/commit/11351e2141599e621b4babe2998273f5e4b0c656))
+
 ### [8.5.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.4...v8.5.5) (2020-02-16)
 
 
