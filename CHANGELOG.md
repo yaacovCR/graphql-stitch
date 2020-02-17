@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.6.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.0...v8.6.1) (2020-02-17)
+
+
+### Bug Fixes
+
+* **typescript:** remove dom requirement ([90093c6](https://github.com/yaacovCR/graphql-tools-fork/commit/90093c6b63b9c04e5262f9fd08244b9bccae7403))
+
 ## [8.6.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.5.5...v8.6.0) (2020-02-17)
 
 
