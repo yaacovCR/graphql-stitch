@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.6.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.1...v8.6.2) (2020-02-27)
+
 ### [8.6.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.0...v8.6.1) (2020-02-17)
 
 
