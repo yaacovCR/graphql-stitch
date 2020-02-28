@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.6.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.2...v8.6.3) (2020-02-28)
+
+
+### Bug Fixes
+
+* **ci:** properly polyfill graphql v14.1 and 14.2 ([c3d6515](https://github.com/yaacovCR/graphql-tools-fork/commit/c3d65158dd426b260ba52b7cf33ca0e624b0de9e))
+
 ### [8.6.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.1...v8.6.2) (2020-02-27)
 
 ### [8.6.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.0...v8.6.1) (2020-02-17)
