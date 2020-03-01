@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.6.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.3...v8.6.4) (2020-03-01)
+
+
+### Bug Fixes
+
+* **extendSchema:** adjust polyfill ([9ea9521](https://github.com/yaacovCR/graphql-tools-fork/commit/9ea9521c0e8703317baabc19536d44a101e7b9e7))
+* **instanceof:** use graphql predicates ([9011fad](https://github.com/yaacovCR/graphql-tools-fork/commit/9011faddf9b01f9cc6c2a76ac6302472e5dcd942))
+* **mergeSchemas:** remove unnecessarily healing ([6e88b89](https://github.com/yaacovCR/graphql-tools-fork/commit/6e88b89aecd2f83325afdf74dbe8f74acd4abf76))
+
 ### [8.6.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.2...v8.6.3) (2020-02-28)
 
 
