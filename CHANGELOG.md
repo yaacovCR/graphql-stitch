@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.8.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.7.0...v8.8.0) (2020-03-06)
+
+
+### Features
+
+* **stitching:** allow specification of custom root object names ([49ab7bf](https://github.com/yaacovCR/graphql-tools-fork/commit/49ab7bf802fefb8a6b14a362f2e2936fd7e910cd))
+
+
+### Bug Fixes
+
+* **stitching:** do not reproxy a nested root field ([dd3bae0](https://github.com/yaacovCR/graphql-tools-fork/commit/dd3bae027679570ccc22711485636b46727ebd5a))
+
 ## [8.7.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.4...v8.7.0) (2020-03-06)
 
 
