@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.7.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.4...v8.7.0) (2020-03-06)
+
+
+### Features
+
+* **RenameRootTypes:** add new transform ([a0362ae](https://github.com/yaacovCR/graphql-tools-fork/commit/a0362ae89b7f5398a93a18d2019f1b592d97c066))
+
 ### [8.6.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.3...v8.6.4) (2020-03-01)
 
 
