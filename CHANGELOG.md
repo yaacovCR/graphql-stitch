@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.0...v8.9.1) (2020-03-09)
+
+
+### Bug Fixes
+
+* **tests:** use toConfig polyfill for all tests ([f19d865](https://github.com/yaacovCR/graphql-tools-fork/commit/f19d86502482cc89f7100e08f28a25be2e701321))
+
 ## [8.9.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.8.1...v8.9.0) (2020-03-09)
 
 
