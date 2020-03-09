@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.9.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.8.1...v8.9.0) (2020-03-09)
+
+
+### Features
+
+* **mapSchema:** initial version ([dfe07b6](https://github.com/yaacovCR/graphql-tools-fork/commit/dfe07b6901b4e8e8f7e1c7efa35703c5d5be7ce6))
+
 ### [8.8.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.8.0...v8.8.1) (2020-03-08)
 
 
