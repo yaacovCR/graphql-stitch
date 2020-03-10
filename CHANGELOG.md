@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.2...v8.9.3) (2020-03-10)
+
+
+### Bug Fixes
+
+* **MapperKind:** export MapperKind ([03c57dc](https://github.com/yaacovCR/graphql-tools-fork/commit/03c57dca32bd305bfdcdf5957e10b8a644cf23a4))
+* **mapSchema:** fix rewiring ([e26da10](https://github.com/yaacovCR/graphql-tools-fork/commit/e26da10e73180e1876f1e2d791ed4b175e7e0ed5))
+
 ### [8.9.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.1...v8.9.2) (2020-03-10)
 
 
