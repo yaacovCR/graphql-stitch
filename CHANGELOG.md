@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.3...v8.9.4) (2020-03-11)
+
+
+### Bug Fixes
+
+* **mapSchema:** rewire directives last ([b50b4ce](https://github.com/yaacovCR/graphql-tools-fork/commit/b50b4cef6f2d4961bb2a4195607469bfe5d9a4fd))
+
 ### [8.9.3](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.2...v8.9.3) (2020-03-10)
 
 
