@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.4...v8.9.5) (2020-03-12)
+
+
+### Bug Fixes
+
+* **SchemaDirectiveVisitor:** visit directives added via extend ([27b39ad](https://github.com/yaacovCR/graphql-tools-fork/commit/27b39ad593e523131e0da4aa0b925ad6dc10515b))
+
 ### [8.9.4](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.3...v8.9.4) (2020-03-11)
 
 
