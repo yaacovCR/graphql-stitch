@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.6](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.5...v8.9.6) (2020-03-12)
+
+
+### Bug Fixes
+
+* **tests:** v12 and v13 extensionASTNode support ([ce6a22b](https://github.com/yaacovCR/graphql-tools-fork/commit/ce6a22b824f81985637e55956a943b4b2cd3b2ec))
+
 ### [8.9.5](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.4...v8.9.5) (2020-03-12)
 
 
