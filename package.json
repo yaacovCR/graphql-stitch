@@ -97,7 +97,7 @@
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.16",
     "standard-version": "^7.1.0",
-    "typedoc": "^0.17.0-3",
+    "typedoc": "0.17.0-3",
     "typescript": "^3.8.2",
     "zen-observable-ts": "^0.8.20"
   }
