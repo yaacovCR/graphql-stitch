@@ -1,5 +1,8 @@
 import { GraphQLScalarType, GraphQLError } from 'graphql';
 
+/**
+ * A scalar that supports file uploads with support for schema proxying.
+ */
 const GraphQLUpload = new GraphQLScalarType({
   name: 'Upload',
   description: 'The `Upload` scalar type represents a file upload.',

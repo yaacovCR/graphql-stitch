@@ -5,6 +5,9 @@ import {
   SelectionSetNode,
 } from 'graphql';
 
+/**
+ * @category Field Node Utility
+ */
 export function renameFieldNode(fieldNode: FieldNode, name: string): FieldNode {
   return {
     ...fieldNode,
@@ -20,6 +23,9 @@ export function renameFieldNode(fieldNode: FieldNode, name: string): FieldNode {
   };
 }
 
+/**
+ * @category Field Node Utility
+ */
 export function preAliasFieldNode(
   fieldNode: FieldNode,
   str: string,
@@ -35,6 +41,9 @@ export function preAliasFieldNode(
   };
 }
 
+/**
+ * @category Field Node Utility
+ */
 export function wrapFieldNode(
   fieldNode: FieldNode,
   path: Array<string>,
@@ -57,6 +66,9 @@ export function wrapFieldNode(
   return newFieldNode;
 }
 
+/**
+ * @category Field Node Utility
+ */
 export function collectFields(
   selectionSet: SelectionSetNode | undefined,
   fragments: Record<string, FragmentDefinitionNode>,
@@ -100,6 +112,9 @@ export function collectFields(
   return fields;
 }
 
+/**
+ * @category Field Node Utility
+ */
 export function hoistFieldNodes({
   fieldNode,
   fieldNames,

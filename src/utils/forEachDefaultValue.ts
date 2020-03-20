@@ -7,6 +7,9 @@ import {
 
 import { IDefaultValueIteratorFn } from '../Interfaces';
 
+/**
+ * @category Schema Utility
+ */
 export function forEachDefaultValue(
   schema: GraphQLSchema,
   fn: IDefaultValueIteratorFn,

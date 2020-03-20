@@ -1,6 +1,3 @@
 [build]
-  base    = "docs/"
-  publish = "docs/public/"
-  command = "gatsby build --prefix-paths && mkdir -p docs/graphql-tools-fork && mv public/* docs/graphql-tools-fork && mv docs public/ && mv public/docs/graphql-tools-fork/_redirects public"
-[build.environment]
-  NPM_VERSION = "6"
+  publish = "typedoc/"
+  command = "npm install && npm run typedoc"

@@ -34,8 +34,11 @@ type NamedTypeMap = {
 
 const hasOwn = Object.prototype.hasOwnProperty;
 
-// Update any references to named schema types that disagree with the named
-// types found in schema.getTypeMap().
+/**
+ * Update any references to named schema types that disagree with the named
+ * types found in schema.getTypeMap().
+ * @category Schema Utility
+ */
 export function healSchema(schema: GraphQLSchema): GraphQLSchema {
   const typeMap = schema.getTypeMap();
   const directives = schema.getDirectives();
@@ -95,6 +98,9 @@ export function healSchema(schema: GraphQLSchema): GraphQLSchema {
   return schema;
 }
 
+/**
+ * @category Schema Utility
+ */
 export function healTypes(
   originalTypeMap: Record<string, GraphQLNamedType | null>,
   directives: ReadonlyArray<GraphQLDirective>,

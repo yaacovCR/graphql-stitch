@@ -7,11 +7,17 @@ import {
   getNamedType,
 } from 'graphql';
 
+/**
+ * @category Selection Set Utility
+ */
 export function parseSelectionSet(selectionSet: string): SelectionSetNode {
   const query = parse(selectionSet).definitions[0] as OperationDefinitionNode;
   return query.selectionSet;
 }
 
+/**
+ * @category Selection Set Utility
+ */
 export function typeContainsSelectionSet(
   type: GraphQLObjectType,
   selectionSet: SelectionSetNode,

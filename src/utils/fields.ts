@@ -7,6 +7,9 @@ import { TypeMap } from 'graphql/type/schema';
 
 import { toConfig } from '../polyfills';
 
+/**
+ * @category Schema Utility
+ */
 export function appendFields(
   typeMap: TypeMap,
   typeName: string,
@@ -36,6 +39,9 @@ export function appendFields(
   typeMap[typeName] = type;
 }
 
+/**
+ * @category Schema Utility
+ */
 export function removeFields(
   typeMap: TypeMap,
   typeName: string,

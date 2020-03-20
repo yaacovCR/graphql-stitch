@@ -2,6 +2,9 @@ import { getNamedType, GraphQLSchema, isObjectType } from 'graphql';
 
 import { IFieldIteratorFn } from '../Interfaces';
 
+/**
+ * @category Schema Utility
+ */
 export function forEachField(
   schema: GraphQLSchema,
   fn: IFieldIteratorFn,

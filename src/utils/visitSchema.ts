@@ -29,7 +29,10 @@ import { healSchema } from './heal';
 import { SchemaVisitor } from './SchemaVisitor';
 import each from './each';
 
-// Generic function for visiting GraphQLSchema objects.
+/**
+ * Generic function for visiting GraphQLSchema objects.
+ * @category Schema Utility
+ */
 export function visitSchema(
   schema: GraphQLSchema,
   // To accommodate as many different visitor patterns as possible, the

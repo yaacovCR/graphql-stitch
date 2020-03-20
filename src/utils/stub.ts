@@ -13,6 +13,9 @@ import {
   isInputObjectType,
 } from 'graphql';
 
+/**
+ * @category Type Utility
+ */
 export function createNamedStub(
   name: string,
   type: 'object' | 'interface' | 'input',

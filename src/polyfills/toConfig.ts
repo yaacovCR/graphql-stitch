@@ -36,6 +36,9 @@ import {
 
 import { graphqlVersion } from '../utils/graphqlVersion';
 
+/**
+ * @category toConfig Polyfill
+ */
 export function schemaToConfig(schema: GraphQLSchema): GraphQLSchemaConfig {
   if (schema.toConfig != null) {
     return schema.toConfig();
@@ -74,6 +77,9 @@ export function schemaToConfig(schema: GraphQLSchema): GraphQLSchemaConfig {
   return schemaConfig;
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function toConfig(
   schemaOrTypeOrDirective: GraphQLSchema,
 ): GraphQLSchemaConfig;
@@ -120,6 +126,9 @@ export function toConfig(schemaOrTypeOrDirective: any) {
   throw new Error(`Unknown object ${schemaOrTypeOrDirective as string}`);
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function typeToConfig(
   type: GraphQLObjectType,
 ): GraphQLObjectTypeConfig<any, any>;
@@ -155,6 +164,9 @@ export function typeToConfig(type: any) {
   throw new Error(`Unknown type ${type as string}`);
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function objectTypeToConfig(
   type: GraphQLObjectType,
 ): GraphQLObjectTypeConfig<any, any> {
@@ -177,6 +189,9 @@ export function objectTypeToConfig(
   return typeConfig;
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function interfaceTypeToConfig(
   type: GraphQLInterfaceType,
 ): GraphQLInterfaceTypeConfig<any, any> {
@@ -205,6 +220,9 @@ export function interfaceTypeToConfig(
   return typeConfig;
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function unionTypeToConfig(
   type: GraphQLUnionType,
 ): GraphQLUnionTypeConfig<any, any> {
@@ -226,6 +244,9 @@ export function unionTypeToConfig(
   return typeConfig;
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function enumTypeToConfig(type: GraphQLEnumType): GraphQLEnumTypeConfig {
   if (type.toConfig != null) {
     return type.toConfig();
@@ -258,6 +279,9 @@ export function enumTypeToConfig(type: GraphQLEnumType): GraphQLEnumTypeConfig {
 
 const hasOwn = Object.prototype.hasOwnProperty;
 
+/**
+ * @category toConfig Polyfill
+ */
 export function scalarTypeToConfig(
   type: GraphQLScalarType,
 ): GraphQLScalarTypeConfig<any, any> {
@@ -295,6 +319,9 @@ export function scalarTypeToConfig(
   return typeConfig;
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function inputObjectTypeToConfig(
   type: GraphQLInputObjectType,
 ): GraphQLInputObjectTypeConfig {
@@ -330,6 +357,9 @@ export function inputObjectTypeToConfig(
   return typeConfig;
 }
 
+/**
+ * @category toConfig Polyfill
+ */
 export function directiveToConfig(
   directive: GraphQLDirective,
 ): GraphQLDirectiveConfig {

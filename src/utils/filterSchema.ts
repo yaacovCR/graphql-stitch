@@ -20,6 +20,9 @@ export type RootFieldFilter = (
 
 export type FieldFilter = (typeName: string, rootFieldName: string) => boolean;
 
+/**
+ * @category Schema Utility
+ */
 export default function filterSchema({
   schema,
   rootFieldFilter = () => true,

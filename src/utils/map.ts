@@ -37,6 +37,9 @@ import {
   DirectiveMapper,
 } from '../Interfaces';
 
+/**
+ * @category Schema Utility
+ */
 export function mapSchema(
   schema: GraphQLSchema,
   schemaMapper: SchemaMapper = {},

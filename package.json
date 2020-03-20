@@ -28,7 +28,8 @@
     "prettier:check": "prettier --trailing-comma all --single-quote --check src/**/*.ts",
     "prerelease": "npm test",
     "release": "npm run releaseonly",
-    "releaseonly": "standard-version"
+    "releaseonly": "standard-version",
+    "typedoc": "typedoc src/delegate/index.ts src/generate/index.ts src/links/index.ts src/polyfills/index.ts src/mock/index.ts src/scalars/index.ts src/stitch/index.ts src/utils/index.ts src/wrap/index.ts src/Interfaces.ts typings.d.ts"
   },
   "repository": {
     "type": "git",
@@ -96,6 +97,7 @@
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.16",
     "standard-version": "^7.1.0",
+    "typedoc": "^0.17.0-3",
     "typescript": "^3.8.2",
     "zen-observable-ts": "^0.8.20"
   }

@@ -1,7 +1,9 @@
 import { IndexedObject } from '../Interfaces';
 
-// A more powerful version of each that has the ability to replace or remove
-// array or object keys.
+/**
+ * A more powerful version of each that has the ability to replace or remove
+ * array or object keys.
+ */
 export default function updateEachKey<V>(
   arrayOrObject: IndexedObject<V>,
   // The callback can return nothing to leave the key untouched, null to remove

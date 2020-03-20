@@ -6,6 +6,9 @@ import {
   OperationDefinitionNode,
 } from 'graphql';
 
+/**
+ * @category Fragment Utility
+ */
 export function concatInlineFragments(
   type: string,
   fragments: Array<InlineFragmentNode>,
@@ -109,6 +112,9 @@ function deduplicateSelection(
   return selection;
 }
 
+/**
+ * @category Fragment Utility
+ */
 export function parseFragmentToInlineFragment(
   definitions: string,
 ): InlineFragmentNode {

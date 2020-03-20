@@ -1,0 +1,24 @@
+{
+  "mode": "library",
+  "out": "typedoc",
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "hideGenerator": true,
+  "listInvalidSymbolLinks": true,
+  "categoryOrder": [
+    "Schema Generation",
+    "Schema Delegation",
+    "Schema Wrapping",
+    "Schema Stitching",
+    "Schema Utility",
+    "Type Utility",
+    "Field Node Utility",
+    "Fragment Utility",
+    "Selection Set Utility",
+    "Input Value Utility",
+    "toConfig Polyfill",
+    "*"
+  ]
+}

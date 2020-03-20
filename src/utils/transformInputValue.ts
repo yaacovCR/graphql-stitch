@@ -13,6 +13,9 @@ type InputValueTransformer = (
   originalValue: any,
 ) => any;
 
+/**
+ * @category Input Value Utility
+ */
 export function transformInputValue(
   type: GraphQLInputType,
   value: any,
@@ -46,14 +49,23 @@ export function transformInputValue(
   // unreachable, no other possible return value
 }
 
+/**
+ * @category Input Value Utility
+ */
 export function serializeInputValue(type: GraphQLInputType, value: any) {
   return transformInputValue(type, value, (t, v) => t.serialize(v));
 }
 
+/**
+ * @category Input Value Utility
+ */
 export function parseInputValue(type: GraphQLInputType, value: any) {
   return transformInputValue(type, value, (t, v) => t.parseValue(v));
 }
 
+/**
+ * @category Input Value Utility
+ */
 export function parseInputValueLiteral(type: GraphQLInputType, value: any) {
   return transformInputValue(type, value, (t, v) => t.parseLiteral(v, {}));
 }

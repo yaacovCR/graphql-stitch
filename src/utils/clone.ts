@@ -22,10 +22,16 @@ import { isSpecifiedScalarType, toConfig } from '../polyfills';
 import { graphqlVersion } from './graphqlVersion';
 import { mapSchema } from './map';
 
+/**
+ * @category Schema Utility
+ */
 export function cloneDirective(directive: GraphQLDirective): GraphQLDirective {
   return new GraphQLDirective(toConfig(directive));
 }
 
+/**
+ * @category Type Utility
+ */
 export function cloneType(type: GraphQLNamedType): GraphQLNamedType {
   if (isObjectType(type)) {
     const config = toConfig(type);
@@ -71,6 +77,9 @@ export function cloneType(type: GraphQLNamedType): GraphQLNamedType {
   throw new Error(`Invalid type ${type as string}`);
 }
 
+/**
+ * @category Schema Utility
+ */
 export function cloneSchema(schema: GraphQLSchema): GraphQLSchema {
   return mapSchema(schema);
 }

@@ -7,7 +7,9 @@ import {
 import { getResolversFromSchema } from '../utils';
 import { IResolverOptions } from '../Interfaces';
 
-// polyfill for graphql < v14.2 which does not support subscriptions
+/**
+ * Polyfill for graphql < v14.2 which does not support subscriptions
+ */
 export function extendSchema(
   schema: GraphQLSchema,
   extension: DocumentNode,

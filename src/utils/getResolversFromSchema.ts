@@ -12,6 +12,9 @@ import { isSpecifiedScalarType } from '../polyfills';
 
 import { cloneType } from './clone';
 
+/**
+ * @category Schema Utility
+ */
 export function getResolversFromSchema(schema: GraphQLSchema): IResolvers {
   const resolvers = Object.create({});
 

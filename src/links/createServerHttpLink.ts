@@ -98,6 +98,10 @@ interface File {
   name?: string;
 }
 
+/**
+ * Function that creates a server-side terminating link with support for the
+ * GraphQL multipart request protocol.
+ */
 export const createServerHttpLink = (linkOptions: Options = {}) => {
   const {
     uri = '/graphql',
