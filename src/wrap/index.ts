@@ -226,7 +226,7 @@
  *     path: Array<string>,
  *     wrapper: QueryWrapper,
  *     extractor: (result: any) => any,
-   * )` - wrap a selection at `path` using function `wrapper`. Apply `extractor` at the same path to get the result. This is used to get a result nested inside other result
+ * )` - wrap a selection at `path` using function `wrapper`. Apply `extractor` at the same path to get the result. This is used to get a result nested inside other result
  *
  * ```
  * transforms: [

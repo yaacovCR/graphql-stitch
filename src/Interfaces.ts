@@ -84,7 +84,7 @@ export interface Transform {
   transformSchema?: (schema: GraphQLSchema) => GraphQLSchema;
   transformRequest?: (originalRequest: Request) => Request;
   transformResult?: (result: Result) => Result;
-};
+}
 
 /**
  * @category Schema Stitching
@@ -128,7 +128,7 @@ export interface SubschemaConfig {
   dispatcher?: Dispatcher;
   transforms?: Array<Transform>;
   merge?: Record<string, MergedTypeConfig>;
-};
+}
 
 /**
  * @category Schema Stitching
@@ -138,7 +138,7 @@ export interface MergedTypeConfig {
   fieldName?: string;
   args?: (originalResult: any) => Record<string, any>;
   resolve?: MergedTypeResolver;
-};
+}
 
 /**
  * @category Schema Stitching
@@ -156,7 +156,7 @@ export type MergedTypeResolver = (
  */
 export interface GraphQLSchemaWithTransforms extends GraphQLSchema {
   transforms?: Array<Transform>;
-};
+}
 
 /**
  * @category Schema Stitching
@@ -214,7 +214,7 @@ export interface ICreateRequestFromInfo {
  */
 export interface IDelegateRequestOptions extends IDelegateToSchemaOptions {
   request: Request;
-};
+}
 
 /**
  * @category Schema Delegation
@@ -249,21 +249,21 @@ export interface MergeInfo {
   replacementFragments: ReplacementFragmentMapping;
   mergedTypes: Record<string, MergedTypeInfo>;
   delegateToSchema<TContext>(options: IDelegateToSchemaOptions<TContext>): any;
-};
+}
 
 /**
  * @category Schema Stitching
  */
 export interface ReplacementSelectionSetMapping {
   [typeName: string]: { [fieldName: string]: SelectionSetNode };
-};
+}
 
 /**
  * @category Schema Stitching
  */
 export interface ReplacementFragmentMapping {
   [typeName: string]: { [fieldName: string]: InlineFragmentNode };
-};
+}
 
 /**
  * @category Schema Stitching
@@ -276,7 +276,7 @@ export interface MergedTypeInfo {
   typeMaps: Map<SubschemaConfig, TypeMap>;
   selectionSets: Map<SubschemaConfig, SelectionSetNode>;
   containsSelectionSet: Map<SubschemaConfig, Map<SelectionSetNode, boolean>>;
-};
+}
 
 /**
  * @category Schema Generation
@@ -306,12 +306,14 @@ export interface IResolverObject<TSource = any, TContext = any, TArgs = any> {
     | IFieldResolver<TSource, TContext, TArgs>
     | IResolverOptions<TSource, TContext>
     | IResolverObject<TSource, TContext>;
-};
+}
 
 /**
  * @category Schema Generation
  */
-export interface IEnumResolver { [key: string]: string | number };
+export interface IEnumResolver {
+  [key: string]: string | number;
+}
 
 /**
  * @category Schema Generation
@@ -362,7 +364,7 @@ export type IConnector<TContext = any> =
  */
 export interface IConnectors<TContext = any> {
   [key: string]: IConnector<TContext>;
-};
+}
 
 /**
  * @category Schema Generation
@@ -429,7 +431,9 @@ export type IMockFn = GraphQLFieldResolver<any, any>;
 /**
  * @category Schema Mocking
  */
-export interface IMocks { [key: string]: IMockFn };
+export interface IMocks {
+  [key: string]: IMockFn;
+}
 
 /**
  * @category Schema Mocking
@@ -487,14 +491,14 @@ export interface Request {
   document: DocumentNode;
   variables: Record<string, any>;
   extensions?: Record<string, any>;
-};
+}
 
 /**
  * @category Schema Stitching
  */
 export interface Result extends ExecutionResult {
   extensions?: Record<string, any>;
-};
+}
 
 /**
  * @category Schema Generation
@@ -504,7 +508,7 @@ export interface GraphQLParseOptions {
   allowLegacySDLEmptyFields?: boolean;
   allowLegacySDLImplementsInterfaces?: boolean;
   experimentalFragmentVariables?: boolean;
-};
+}
 
 export type IndexedObject<V> = { [key: string]: V } | ReadonlyArray<V>;
 
