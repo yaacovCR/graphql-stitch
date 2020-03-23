@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.8](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.7...v8.9.8) (2020-03-23)
+
+
+### Bug Fixes
+
+* **addResolveFunctionsToSchema:** return modified schema ([6c17159](https://github.com/yaacovCR/graphql-tools-fork/commit/6c171592d74401a756003e6b910b7b486c57561a)), closes [/github.com/ardatan/graphql-toolkit/commit/46ce3562230e538a2a1472ab0c45fa5267d68ddc#commitcomment-37987581](https://github.com/yaacovCR//github.com/ardatan/graphql-toolkit/commit/46ce3562230e538a2a1472ab0c45fa5267d68ddc/issues/commitcomment-37987581)
+
 ### [8.9.7](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.6...v8.9.7) (2020-03-23)
 
 
