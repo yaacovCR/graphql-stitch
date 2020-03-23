@@ -53,7 +53,7 @@ export function schemaToConfig(schema: GraphQLSchema): GraphQLSchemaConfig {
   const newTypes: Array<GraphQLNamedType> = [];
 
   const types = schema.getTypeMap();
-  Object.keys(types).forEach(typeName => {
+  Object.keys(types).forEach((typeName) => {
     newTypes.push(types[typeName]);
   });
 
@@ -285,7 +285,7 @@ export function enumTypeToConfig(type: GraphQLEnumType): GraphQLEnumTypeConfig {
 
   const newValues = {};
 
-  type.getValues().forEach(value => {
+  type.getValues().forEach((value) => {
     newValues[value.name] = {
       description: value.description,
       value: value.value,
@@ -377,7 +377,7 @@ export function inputFieldMapToConfig(
   fields: GraphQLInputFieldMap,
 ): GraphQLInputFieldConfigMap {
   const newFields = {};
-  Object.keys(fields).forEach(fieldName => {
+  Object.keys(fields).forEach((fieldName) => {
     const field = fields[fieldName];
     newFields[fieldName] = toConfig(field);
   });
@@ -426,7 +426,7 @@ export function fieldMapToConfig(
 ): GraphQLFieldConfigMap<any, any> {
   const newFields = {};
 
-  Object.keys(fields).forEach(fieldName => {
+  Object.keys(fields).forEach((fieldName) => {
     const field = fields[fieldName];
     newFields[fieldName] = toConfig(field);
   });
@@ -453,7 +453,7 @@ export function argumentMapToConfig(
   args: ReadonlyArray<GraphQLArgument>,
 ): GraphQLFieldConfigArgumentMap {
   const newArguments = {};
-  args.forEach(arg => {
+  args.forEach((arg) => {
     newArguments[arg.name] = argumentToConfig(arg);
   });
 

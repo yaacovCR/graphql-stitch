@@ -20,10 +20,10 @@ export function appendFields(
     const typeConfig = toConfig(type);
     const originalFields = typeConfig.fields;
     const newFields = {};
-    Object.keys(originalFields).forEach(fieldName => {
+    Object.keys(originalFields).forEach((fieldName) => {
       newFields[fieldName] = originalFields[fieldName];
     });
-    Object.keys(fields).forEach(fieldName => {
+    Object.keys(fields).forEach((fieldName) => {
       newFields[fieldName] = fields[fieldName];
     });
     type = new GraphQLObjectType({
@@ -52,7 +52,7 @@ export function removeFields(
   const originalFields = typeConfig.fields;
   const newFields = {};
   const removedFields = {};
-  Object.keys(originalFields).forEach(fieldName => {
+  Object.keys(originalFields).forEach((fieldName) => {
     if (testFn(fieldName, originalFields[fieldName])) {
       removedFields[fieldName] = originalFields[fieldName];
     } else {

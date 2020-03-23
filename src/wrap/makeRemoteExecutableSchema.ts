@@ -331,7 +331,7 @@ export function createResolver(
 ): GraphQLFieldResolver<any, any> {
   return async (_root, _args, context, info) => {
     const fragments = Object.keys(info.fragments).map(
-      fragment => info.fragments[fragment],
+      (fragment) => info.fragments[fragment],
     );
     let query: DocumentNode = {
       kind: Kind.DOCUMENT,
@@ -352,7 +352,7 @@ export function createResolver(
 function createSubscriptionResolver(link: ApolloLink): ResolverFn {
   return (_root, _args, context, info) => {
     const fragments = Object.keys(info.fragments).map(
-      fragment => info.fragments[fragment],
+      (fragment) => info.fragments[fragment],
     );
     let query: DocumentNode = {
       kind: Kind.DOCUMENT,
@@ -369,7 +369,7 @@ function createSubscriptionResolver(link: ApolloLink): ResolverFn {
 
     const observable = execute(link, operation);
     const originalAsyncIterator = observableToAsyncIterable(observable);
-    return mapAsyncIterator(originalAsyncIterator, result => ({
+    return mapAsyncIterator(originalAsyncIterator, (result) => ({
       [info.fieldName]: checkResultAndHandleErrors(result, context, info),
     }));
   };
