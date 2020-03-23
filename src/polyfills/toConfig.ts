@@ -140,9 +140,7 @@ export function toConfig(graphqlObject: any) {
       graphqlObject.subscribe != null
     ) {
       return fieldToConfig(graphqlObject);
-    } else if (
-      graphqlObject.defaultValue != null
-    ) {
+    } else if (graphqlObject.defaultValue != null) {
       return inputFieldToConfig(graphqlObject);
     }
 
@@ -153,7 +151,7 @@ export function toConfig(graphqlObject: any) {
     const { name, isDeprecated, ...rest } = graphqlObject;
     return {
       ...rest,
-    }
+    };
   }
 
   throw new Error(`Unknown graphql object ${graphqlObject as string}`);
