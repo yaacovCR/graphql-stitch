@@ -6,13 +6,13 @@
 
 This fork will hopefully provide more and more timely engagement with the community as we continue to support the following use cases, with the notable inclusion of schema stitching:
 
-1. Use the GraphQL schema language to [generate a schema](https://graphql-tools-fork.netlify.com/docs/graphql-tools-fork/generate-schema.html) with full support for resolvers, interfaces, unions, and custom scalars. The schema produced is completely compatible with [GraphQL.js](https://github.com/graphql/graphql-js).
-2. [Mock your GraphQL API](https://graphql-tools-fork.netlify.com/docs/graphql-tools-fork/mocking.html) with fine-grained per-type mocking
-3. Automatically [stitch multiple schemas together](https://graphql-tools-fork.netlify.com/docs/graphql-tools-fork/schema-stitching.html) into one larger API
+1. Use the GraphQL schema language to [generate a schema](https://graphql-tools-fork.netlify.com/modules/_generate_index_.html) with full support for resolvers, interfaces, unions, and custom scalars. The schema produced is completely compatible with [GraphQL.js](https://github.com/graphql/graphql-js).
+2. [Mock your GraphQL API](https://graphql-tools-fork.netlify.com/modules/_mock_index_.html) with fine-grained per-type mocking
+3. Automatically [stitch multiple schemas together](https://graphql-tools-fork.netlify.com/modules/_stitch_index_.html) into one larger API
 
 ## Documentation
 
-[Read the forked docs.](https://graphql-tools-fork.netlify.com/docs/graphql-tools-fork/)
+[Read the forked docs.](https://graphql-tools-fork.netlify.com)
 
 See the changelog for recent changes:
 * https://github.com/yaacovCR/graphql-tools-fork/blob/master/CHANGELOG.md
