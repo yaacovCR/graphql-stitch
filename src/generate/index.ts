@@ -883,8 +883,8 @@ export function addResolveFunctionsToSchema(
   schemaOrOptions: GraphQLSchema | IAddResolversToSchemaOptions,
   legacyInputResolvers?: IResolvers,
   legacyInputValidationOptions?: IResolverValidationOptions,
-) {
-  addResolversToSchema(
+): GraphQLSchema {
+  return addResolversToSchema(
     schemaOrOptions,
     legacyInputResolvers,
     legacyInputValidationOptions,
@@ -901,6 +901,6 @@ export function addSchemaLevelResolveFunction(
 export function assertResolveFunctionsPresent(
   schema: GraphQLSchema,
   resolverValidationOptions: IResolverValidationOptions = {},
-) {
+): void {
   assertResolversPresent(schema, resolverValidationOptions);
 }
