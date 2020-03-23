@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.9.7](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.6...v8.9.7) (2020-03-23)
+
+
+### Bug Fixes
+
+* **tests:** v15 test failure ([e7f901c](https://github.com/yaacovCR/graphql-tools-fork/commit/e7f901c1e5c9f8ea539ad6501e088344a7a18749))
+* **toConfig:** accept field or inputField as arguments ([29c222d](https://github.com/yaacovCR/graphql-tools-fork/commit/29c222d680cf0b98083b9a2f3f90349ea4ce1879)), closes [#44](https://github.com/yaacovCR/graphql-tools-fork/issues/44)
+* **toConfig:** in older versions of graphql ([2c4df59](https://github.com/yaacovCR/graphql-tools-fork/commit/2c4df5925c25ebaef451ad38f4f60cca6e670ad1))
+* **transforms:** fix nested field name changes ([3020c3c](https://github.com/yaacovCR/graphql-tools-fork/commit/3020c3c9d64a57ee8921464e940ba587e2eb04cb)), closes [#43](https://github.com/yaacovCR/graphql-tools-fork/issues/43)
+
 ### [8.9.6](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.5...v8.9.6) (2020-03-12)
 
 
