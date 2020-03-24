@@ -192,12 +192,12 @@
  * ) => FieldNode;
  * ```
  *
- * * `FilterObjectFields(filter: ObjectFilter)`: Removes object fields for which the `filter` function returns `false`.
+ * * `FilterObjectFields(filter: FieldFilter)`: Removes object fields for which the `filter` function returns `false`.
  *
  * ```
- * FilterObjectFields(filter: ObjectFilter)
+ * FilterObjectFields(filter: FieldFilter)
  *
- * type ObjectFilter = (
+ * type FieldFilter = (
  *   typeName: string,
  *   fieldName: string,
  *   field: GraphQLField<any, any>,
