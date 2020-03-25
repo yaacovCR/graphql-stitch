@@ -317,7 +317,8 @@ export {
   applyResultTransforms,
 } from './transforms';
 
-export { default as transformSchema, wrapSchema } from './transformSchema';
+export { transformSchema } from './transformSchema';
+export { wrapSchema } from './wrapSchema';
 
 export * from './transforms/index';
 

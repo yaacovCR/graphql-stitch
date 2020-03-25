@@ -27,6 +27,7 @@ import {
   GraphQLFieldConfig,
   FragmentDefinitionNode,
   SelectionNode,
+  VariableDefinitionNode,
 } from 'graphql';
 
 import { TypeMap } from 'graphql/type/schema';
@@ -236,6 +237,7 @@ export interface IDelegateToSchemaOptions<TContext = { [key: string]: any }> {
   transforms?: Array<Transform>;
   skipValidation?: boolean;
   skipTypeMerging?: boolean;
+  transformedSchema?: GraphQLSchema;
 }
 
 /**
@@ -244,11 +246,31 @@ export interface IDelegateToSchemaOptions<TContext = { [key: string]: any }> {
 export interface ICreateRequestFromInfo {
   info: IGraphQLToolsResolveInfo;
   schema: GraphQLSchema | SubschemaConfig;
+  transformedSchema: GraphQLSchema;
   operation: Operation;
   fieldName: string;
   args?: Record<string, any>;
   selectionSet?: SelectionSetNode;
   fieldNodes?: ReadonlyArray<FieldNode>;
+}
+
+/**
+ * @category Schema Delegation
+ */
+export interface ICreateRequest {
+  sourceSchema: GraphQLSchema;
+  sourceParentType: GraphQLObjectType;
+  sourceFieldName: string;
+  fragments: Record<string, FragmentDefinitionNode>;
+  variableDefinitions: ReadonlyArray<VariableDefinitionNode>;
+  variableValues: Record<string, any>;
+  targetSchema: GraphQLSchema;
+  targetOperation: Operation;
+  targetField: string;
+  args: Record<string, any>;
+  selectionSet: SelectionSetNode;
+  fieldNodes: ReadonlyArray<FieldNode>;
+  defaultArgs: Record<string, any>;
 }
 
 /**
