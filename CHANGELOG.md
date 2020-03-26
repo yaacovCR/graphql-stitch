@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.10.0...v9.0.0) (2020-03-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **stitching:** Allow specification of args even with root field transformations. Includes changes to createRequestFromInfo and createRequest signatures and related interfaces, streamlining them to only use the targetOperation and targetFieldName, returning to the original upstream graphql-tools behavior of adding args later as a transform.
+
+args passed to delegateToSchema, however, are still optional. All args passed to delegateToSchema are serialized using the targetSchema serialization, if available.
+
+### Bug Fixes
+
+* **delegation:** fix argument/variable bugs ([74b95c2](https://github.com/yaacovCR/graphql-tools-fork/commit/74b95c25010689033e603d43447d645b11231056)), closes [#46](https://github.com/yaacovCR/graphql-tools-fork/issues/46) [#44](https://github.com/yaacovCR/graphql-tools-fork/issues/44)
+* **stitching:** delegateToSchema args specification ([01fddb4](https://github.com/yaacovCR/graphql-tools-fork/commit/01fddb43f52c66e0bea55ae483ad29bc2467b069))
+
 ## [8.10.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.9.9...v8.10.0) (2020-03-24)
 
 
