@@ -140,7 +140,7 @@ export function toConfig(graphqlObject: any) {
       graphqlObject.subscribe != null
     ) {
       return fieldToConfig(graphqlObject);
-    } else if (graphqlObject.defaultValue != null) {
+    } else if (graphqlObject.defaultValue !== undefined) {
       return inputFieldToConfig(graphqlObject);
     }
 
