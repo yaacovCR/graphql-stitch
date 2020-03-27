@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.0.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v9.0.0...v9.0.1) (2020-03-27)
+
+
+### Bug Fixes
+
+* **delegation:** do not override null defaults ([cdec507](https://github.com/yaacovCR/graphql-tools-fork/commit/cdec5076f55b379faf85af93a23966a9da12cd24))
+
 ## [9.0.0](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.10.0...v9.0.0) (2020-03-26)
 
 
