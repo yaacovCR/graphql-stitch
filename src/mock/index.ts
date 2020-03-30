@@ -378,6 +378,7 @@ function addMocksToSchema({
     ): any => {
       // nullability doesn't matter for the purpose of mocking.
       const fieldType = getNullableType(type) as GraphQLNullableType;
+      const namedFieldType = getNamedType(fieldType);
 
       if (fieldName && root && typeof root[fieldName] !== 'undefined') {
         let result: any;
@@ -401,7 +402,6 @@ function addMocksToSchema({
 
         // Now we merge the result with the default mock for this type.
         // This allows overriding defaults while writing very little code.
-        const namedFieldType = getNamedType(fieldType);
         if (mockFunctionMap.has(namedFieldType.name)) {
           const mock = mockFunctionMap.get(namedFieldType.name);
 

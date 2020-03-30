@@ -773,6 +773,43 @@ Previously, the merged schema internally used the serialized version.
 
 # Prior changes from graphl-tools:
 
+### Next
+
+#### Features
+
+* Adds [graphql-upload](https://github.com/jaydenseric/graphql-upload) compatible scalar and link for proxying remote file uploads [#671](https://github.com/apollographql/graphql-tools/issues/671)
+* Add ability to merge fields from types from different schemas
+* Adds transforms to wrap, extract, and rename fields [#1183](https://github.com/apollographql/graphql-tools/issues/1183)
+* Adds transform to filter object fields [#819](https://github.com/apollographql/graphql-tools/issues/819)
+* Exports visitSchema, SchemaVisitor, healSchema, healTypes, cloneSchema, cloneType, cloneDirective to enable more custom transforms. [#1070](https://github.com/apollographql/graphql-tools/issues/1070)
+* Allows removing extra delegation layers by passing fetcher/link options directly to delegateToSchema, mergeSchemas, and transformSchema and by filtering directly with filterSchema without additional transformation round [#1165](https://github.com/apollographql/graphql-tools/issues/1165)
+
+#### Bug Fixes
+
+* Filter unused variables from map when proxying requests
+* Preserve subscription errors when using makeRemoteExecutableSchema
+* Preserve extensions when transforming schemas
+* Fix merging and transforming of custom scalars and enums [#501](https://github.com/apollographql/graphql-tools/issues/501), [#1056](https://github.com/apollographql/graphql-tools/issues/1056), [#1200](https://github.com/apollographql/graphql-tools/issues/1200)
+* Allow renaming of subscription root fields [#997](https://github.com/apollographql/graphql-tools/issues/997), [#1002](https://github.com/apollographql/graphql-tools/issues/1002)
+* Fix alias resolution to no longer incorrectly fallback to non-aliased field when null [#1171](https://github.com/apollographql/graphql-tools/issues/1171)
+* Do not remove default directives (skip, include, deprecated) when not merging custom directives [#1159](https://github.com/apollographql/graphql-tools/issues/1159)
+* Fixes errors support [#743](https://github.com/apollographql/graphql-tools/issues/743), [#1037](https://github.com/apollographql/graphql-tools/issues/1037), [#1046](https://github.com/apollographql/graphql-tools/issues/1046)
+* Fix mergeSchemas to allow resolvers to return fields defined as functions [#1061](https://github.com/apollographql/graphql-tools/issues/1061)
+* Fix default values with mergeSchemas and addResolveFunctionsToSchema [#1121](https://github.com/apollographql/graphql-tools/issues/1121)
+* Fix interface and union healing
+* Fix stitching unions of types with enums
+* Fix mocking to work when schema stitching
+* Fix lost directives when adding an enum resolver
+
+### 4.0.7
+
+* Filter `extensions` prior to passing them to `buildASTSchema`, in an effort to provide minimum compatibilty for `graphql@14`-compatible schemas with the upcoming `graphql@15` release. This PR does not, however, bring support for newer `graphql@15` features like interfaces implementing interfaces. [#1284](https://github.com/apollographql/graphql-tools/pull/1284)
+
+### 4.0.6
+
+* Use `getIntrospectionQuery` instead of deprecated `introspectionQuery` constant from graphql-js
+  [@derek-miller](https://github.com/derek-miller) in [#1228](https://github.com/apollographql/graphql-tools/pull/1228)
+
 ### 4.0.5
 
 * Fixes a bug where schemas with scalars could not be merged when passed to
@@ -782,6 +819,12 @@ Previously, the merged schema internally used the serialized version.
   [@freiksenet](https://github.com/freiksenet) in [#1003](https://github.com/apollographql/graphql-tools/pull/1003)
 * Allow user-provided `buildSchema` options.  <br/>
   [@trevor-scheer](https://github.com/trevor-scheer) in [#1154](https://github.com/apollographql/graphql-tools/pull/1154)
+* Fix `delegateToSchema` to allow delegation to subscriptions with different root field names, allows
+  the use of the `RenameRootFields` transform with subscriptions,
+  pull request [#1104](https://github.com/apollographql/graphql-tools/pull/1104), fixes
+  [#997](https://github.com/apollographql/graphql-tools/issues/997).  <br/>
+* Add transformers to rename, filter, and arbitrarily transform object fields. <br/>
+  Fixes [#819](https://github.com/apollographql/graphql-tools/issues/819).
 
 ### 4.0.4
 
