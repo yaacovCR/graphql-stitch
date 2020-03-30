@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [9.0.2](https://github.com/yaacovCR/graphql-tools-fork/compare/v9.0.1...v9.0.2) (2020-03-30)
+
+### [4.0.7](https://github.com/yaacovCR/graphql-tools-fork/compare/v8.6.1...v4.0.7) (2020-02-19)
+
+### [4.0.6](https://github.com/yaacovCR/graphql-tools-fork/compare/v7.0.3...v4.0.6) (2019-10-24)
+
 ### [9.0.1](https://github.com/yaacovCR/graphql-tools-fork/compare/v9.0.0...v9.0.1) (2020-03-27)
 
 
