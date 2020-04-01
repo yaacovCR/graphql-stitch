@@ -7,6 +7,8 @@ export function applySchemaTransforms(
   originalSchema: GraphQLSchema,
   transforms: Array<Transform>,
 ): GraphQLSchema {
+  // Schemas are cloned prior to passing to each transform as
+  // transforms cannot be trusted and may modify the passed in schema.
   return transforms.reduce(
     (schema: GraphQLSchema, transform: Transform) =>
       transform.transformSchema != null
