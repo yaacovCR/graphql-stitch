@@ -4,10 +4,9 @@ import {
   buildASTSchema,
   GraphQLSchema,
   DocumentNode,
-  ASTNode,
 } from 'graphql';
 
-import { ITypeDefinitions, GraphQLParseOptions } from '../Interfaces';
+import { ITypeDefinitions, GraphQLParseOptions, isASTNode } from '../Interfaces';
 
 import {
   extractExtensionDefinitions,
@@ -21,42 +20,32 @@ function buildSchemaFromTypeDefinitions(
   parseOptions?: GraphQLParseOptions,
 ): GraphQLSchema {
   // TODO: accept only array here, otherwise interfaces get confusing.
-  let myDefinitions = typeDefinitions;
-  let astDocument: DocumentNode;
+  let document: DocumentNode;
 
-  if (isDocumentNode(typeDefinitions)) {
-    astDocument = typeDefinitions;
-  } else if (typeof myDefinitions !== 'string') {
-    if (!Array.isArray(myDefinitions)) {
-      const type = typeof myDefinitions;
+  if (isASTNode(typeDefinitions)) {
+    document = typeDefinitions;
+  } else if (typeof typeDefinitions === 'string') {
+    document = parse(typeDefinitions, parseOptions);
+  } else {
+    if (!Array.isArray(typeDefinitions)) {
       throw new SchemaError(
-        `typeDefs must be a string, array or schema AST, got ${type}`,
+        `typeDefs must be a string, array or schema AST, got ${typeof typeDefinitions}`,
       );
     }
-    myDefinitions = concatenateTypeDefs(myDefinitions);
+    document = parse(concatenateTypeDefs(typeDefinitions), parseOptions);
   }
 
-  if (typeof myDefinitions === 'string') {
-    astDocument = parse(myDefinitions, parseOptions);
-  }
-
-  const typesAst = filterExtensionDefinitions(astDocument);
+  const typesAst = filterExtensionDefinitions(document);
 
   const backcompatOptions = { commentDescriptions: true };
   let schema: GraphQLSchema = buildASTSchema(typesAst, backcompatOptions);
 
-  const extensionsAst = extractExtensionDefinitions(astDocument);
+  const extensionsAst = extractExtensionDefinitions(document);
   if (extensionsAst.definitions.length > 0) {
     schema = extendSchema(schema, extensionsAst, backcompatOptions);
   }
 
   return schema;
-}
-
-function isDocumentNode(
-  typeDefinitions: ITypeDefinitions,
-): typeDefinitions is DocumentNode {
-  return (typeDefinitions as ASTNode).kind !== undefined;
 }
 
 export default buildSchemaFromTypeDefinitions;

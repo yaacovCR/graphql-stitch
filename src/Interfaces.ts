@@ -28,6 +28,7 @@ import {
   FragmentDefinitionNode,
   SelectionNode,
   VariableDefinitionNode,
+  ASTNode,
 } from 'graphql';
 
 import { TypeMap } from 'graphql/type/schema';
@@ -833,3 +834,12 @@ export type DirectiveMapper = (
   directive: GraphQLDirective,
   schema: GraphQLSchema,
 ) => GraphQLDirective | null | undefined;
+
+/**
+ * @category Schema Generation
+ */
+export function isASTNode(
+  astNode: any,
+): astNode is ASTNode {
+  return (astNode as ASTNode).kind !== undefined;
+}

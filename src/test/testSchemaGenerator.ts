@@ -155,7 +155,7 @@ describe('generating schema from shorthand', () => {
         resolvers: {},
       }),
     ).to.throw(
-      'typeDef array must contain only strings and functions, got number',
+      'typeDef array must contain only strings, ASTs or functions, got number',
     );
   });
 

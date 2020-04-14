@@ -1,6 +1,6 @@
-import { print, ASTNode } from 'graphql';
+import { print } from 'graphql';
 
-import { ITypedef } from '../Interfaces';
+import { ITypedef, isASTNode } from '../Interfaces';
 
 import SchemaError from './SchemaError';
 
@@ -19,12 +19,11 @@ function concatenateTypeDefs(
       }
     } else if (typeof typeDef === 'string') {
       resolvedTypeDefinitions.push(typeDef.trim());
-    } else if ((typeDef as ASTNode).kind !== undefined) {
+    } else if (isASTNode(typeDef)) {
       resolvedTypeDefinitions.push(print(typeDef).trim());
     } else {
-      const type = typeof typeDef;
       throw new SchemaError(
-        `typeDef array must contain only strings and functions, got ${type}`,
+        `typeDef array must contain only strings, ASTs or functions, got ${typeof typeDef}`,
       );
     }
   });
